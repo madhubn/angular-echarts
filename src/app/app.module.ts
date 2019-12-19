@@ -1,16 +1,14 @@
-
 import { BrowserModule } from "@angular/platform-browser";
 
 import { AppComponent } from "./app.component";
 import { HelloComponent } from "./hello.component";
-import { NgxGaugeModule } from 'ngx-gauge';
 import { CdkTableModule } from "@angular/cdk/table";
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import {DragDropModule} from '@angular/cdk/drag-drop';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { DragDropModule } from "@angular/cdk/drag-drop";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { FlexLayoutModule } from "@angular/flex-layout";
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -45,11 +43,12 @@ import {
   MatToolbarModule,
   MatTooltipModule
 } from "@angular/material";
-import { GridComponent } from './grid/grid.component';
-import { TextWidgetComponent } from './text-widget/text-widget.component';
-import { GuageComponent } from './guage/guage.component';
-import { NgxEchartsModule } from 'ngx-echarts';
+import { GridComponent } from "./grid/grid.component";
+import { TextWidgetComponent } from "./text-widget/text-widget.component";
+import { GuageComponent } from "./guage/guage.component";
+import { NgxEchartsModule } from "ngx-echarts";
 
+import { GaugeModule } from "angular-gauge";
 const modules = [
   MatAutocompleteModule,
   MatButtonModule,
@@ -97,9 +96,15 @@ const modules = [
     MatNativeDateModule,
     ReactiveFormsModule,
     NgxEchartsModule,
-    NgxGaugeModule 
+    GaugeModule.forRoot()
   ],
-  declarations: [AppComponent, HelloComponent, GridComponent, TextWidgetComponent, GuageComponent],
+  declarations: [
+    AppComponent,
+    HelloComponent,
+    GridComponent,
+    TextWidgetComponent,
+    GuageComponent
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

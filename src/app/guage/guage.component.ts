@@ -7,11 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GuageComponent implements OnInit {
 
-    gaugeType = "semi";
-    gaugeValue = 28.3;
-    gaugeLabel = "Speed";
-    gaugeAppendText = "km/hr";
-
+  
   constructor() { }
 
   ngOnInit() {
