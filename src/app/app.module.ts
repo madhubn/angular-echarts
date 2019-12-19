@@ -46,6 +46,7 @@ import {
   MatTooltipModule
 } from "@angular/material";
 import { GridComponent } from './grid/grid.component';
+import { TextWidgetComponent } from './text-widget/text-widget.component';
 
 const modules = [
   MatAutocompleteModule,
@@ -94,7 +95,7 @@ const modules = [
     MatNativeDateModule,
     ReactiveFormsModule
   ],
-  declarations: [AppComponent, HelloComponent, GridComponent],
+  declarations: [AppComponent, HelloComponent, GridComponent, TextWidgetComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
