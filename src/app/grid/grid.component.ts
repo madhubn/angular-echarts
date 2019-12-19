@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { moveItemInArray, CdkDragDrop } from '@angular/cdk/drag-drop';
+import { Component, OnInit } from "@angular/core";
+import { moveItemInArray, CdkDragDrop } from "@angular/cdk/drag-drop";
 
 export interface Tile {
   color: string;
@@ -9,31 +9,36 @@ export interface Tile {
 }
 
 @Component({
-  selector: 'app-grid',
-  templateUrl: './grid.component.html',
-  styleUrls: ['./grid.component.css']
+  selector: "app-grid",
+  templateUrl: "./grid.component.html",
+  styleUrls: ["./grid.component.css"]
 })
 export class GridComponent implements OnInit {
-   tiles: Tile[] = [
-    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
+  tiles: Tile[] = [
+    { text: "Line", cols: 2, rows: 3, color: "lightblue" },
+    { text: "Guage", cols: 1, rows: 3, color: "lightgreen" },
+    { text: "Text", cols: 1, rows: 3, color: "lightpink" },
+    { text: "Bar", cols: 2, rows: 3, color: "#DDBDF1" }
   ];
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
+    this.readFromLocalStorage();
   }
 
-    drop(event: CdkDragDrop<string[]>) {
+  drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
+      console.log("event", event);
       moveItemInArray(this.tiles, event.previousIndex, event.currentIndex);
-      localStorage.setItem('items', JSON.stringify(this.tiles));
+      localStorage.setItem("items", JSON.stringify(this.tiles));
     }
   }
 
-
- 
-
+  readFromLocalStorage() {
+    const tiles = JSON.parse(localStorage.getItem("items"));
+    if (tiles !== null) {
+      this.tiles = tiles;
+    } 
+  }
 }

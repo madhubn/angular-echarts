@@ -10,6 +10,7 @@ import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -79,7 +80,8 @@ const modules = [
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  DragDropModule
+  DragDropModule,
+  FlexLayoutModule
 ];
 
 @NgModule({
