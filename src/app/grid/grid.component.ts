@@ -4,13 +4,15 @@ import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/map";
 import "rxjs/add/operator/takeWhile";
 import "rxjs/add/operator/startWith";
-import { ObservableMedia } from "@angular/flex-layout";
+import { MediaObserver, MediaChange } from "@angular/flex-layout";
+import { Subscription } from "rxjs";
 
 export interface Tile {
   color: string;
   cols: number;
   rows: number;
   text: string;
+  id: string;
 }
 
 @Component({
@@ -20,17 +22,41 @@ export interface Tile {
 })
 export class GridComponent implements OnInit {
   grid = new Map([["xs", 1], ["sm", 2], ["md", 2], ["lg", 3], ["xl", 3]]);
-  cols = 4;
+  cols = 3;
   start: number;
-
+  watcher: Subscription;
   tiles: Tile[] = [
-    { text: "Line", cols: 2, rows: 3, color: "lightblue" },
-    { text: "Guage", cols: 1, rows: 3, color: "lightgreen" },
-    { text: "Text", cols: 1, rows: 3, color: "lightpink" },
-    { text: "Bar", cols: 2, rows: 3, color: "#DDBDF1" }
+    {
+      text: "Line",
+      cols: 2,
+      rows: 3,
+      color: "lightblue",
+      id: "TextWidgetComponent"
+    },
+    {
+      text: "Guage",
+      cols: 1,
+      rows: 3,
+      color: "lightgreen",
+      id: "TextWidgetComponent1"
+    },
+    {
+      text: "Text",
+      cols: 1,
+      rows: 3,
+      color: "lightpink",
+      id: "TextWidgetComponent"
+    },
+    {
+      text: "Bar",
+      cols: 2,
+      rows: 3,
+      color: "#DDBDF1",
+      id: "TextWidgetComponent1"
+    }
   ];
 
-  constructor(private observableMedia: ObservableMedia) {}
+  constructor(private mediaObserver: MediaObserver) {}
 
   ngOnInit() {
     this.getCol();
@@ -39,18 +65,27 @@ export class GridComponent implements OnInit {
 
   getCol() {
     this.grid.forEach((cols, mqAlias) => {
-      if (this.observableMedia.isActive(mqAlias)) {
+      if (this.mediaObserver.isActive(mqAlias)) {
         this.start = cols;
       }
     });
-    this.cols = this.observableMedia
-      .asObservable()
-      .map(change => {
-        console.log(change);
-        console.log(this.grid.get(change.mqAlias));
-        return this.grid.get(change.mqAlias);
-      })
-      .startWith(this.start);
+    // this.cols = this.observableMedia
+    //   .asObservable()
+    //   .map(change => {
+    //     console.log(change);
+    //     console.log(this.grid.get(change.mqAlias));
+    //     return this.grid.get(change.mqAlias);
+    //   })
+    //   .startWith(this.start);
+
+    this.watcher = this.mediaObserver.media$.subscribe(
+      (change: MediaChange) => {
+        console.log("change.mqAlias", change.mqAlias);
+        this.cols = change ? this.grid.get(change.mqAlias) : 4;
+        if (change.mqAlias == "xs") {
+        }
+      }
+    );
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -62,9 +97,9 @@ export class GridComponent implements OnInit {
   }
 
   readFromLocalStorage() {
-    const tiles = JSON.parse(localStorage.getItem("items"));
-    if (tiles !== null) {
-      this.tiles = tiles;
-    }
+    // const tiles = JSON.parse(localStorage.getItem("items"));
+    // if (tiles !== null) {
+    //   this.tiles = tiles;
+    // }
   }
 }
