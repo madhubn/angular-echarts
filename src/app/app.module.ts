@@ -8,7 +8,7 @@ import { CdkTableModule } from "@angular/cdk/table";
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-
+import {DragDropModule} from '@angular/cdk/drag-drop';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatAutocompleteModule,
@@ -44,6 +44,7 @@ import {
   MatToolbarModule,
   MatTooltipModule
 } from "@angular/material";
+import { GridComponent } from './grid/grid.component';
 
 const modules = [
   MatAutocompleteModule,
@@ -77,7 +78,8 @@ const modules = [
   MatTableModule,
   MatTabsModule,
   MatToolbarModule,
-  MatTooltipModule
+  MatTooltipModule,
+  DragDropModule
 ];
 
 @NgModule({
@@ -90,7 +92,7 @@ const modules = [
     MatNativeDateModule,
     ReactiveFormsModule
   ],
-  declarations: [AppComponent, HelloComponent],
+  declarations: [AppComponent, HelloComponent, GridComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
