@@ -31,7 +31,7 @@ export class GridComponent implements OnInit {
       cols: 2,
       rows: 3,
       color: "lightblue",
-      id: "TextWidgetComponent"
+      id: "LineComponent"
     },
     {
       text: "Guage",

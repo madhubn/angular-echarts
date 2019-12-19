@@ -47,6 +47,7 @@ import { GridComponent } from "./grid/grid.component";
 import { TextWidgetComponent } from "./text-widget/text-widget.component";
 import { GuageComponent } from "./guage/guage.component";
 import { NgxEchartsModule } from "ngx-echarts";
+import { LineComponent } from './line/line.component';
 
 // import { GaugeModule } from "angular-gauge";
 const modules = [
@@ -103,7 +104,8 @@ const modules = [
     HelloComponent,
     GridComponent,
     TextWidgetComponent,
-    GuageComponent
+    GuageComponent,
+    LineComponent
   ],
   bootstrap: [AppComponent]
 })

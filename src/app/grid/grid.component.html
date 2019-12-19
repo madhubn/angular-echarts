@@ -1,5 +1,5 @@
-<mat-grid-list fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center" class="row-example"
-	fxLayoutAlign.sm="row" cdkDropList (cdkDropListDropped)=" drop($event)" [cols]="cols" rowHeight="100px">
+<mat-grid-list fxLayout="row" fxLayout.xs="column" class="row-example" fxLayoutAlign.sm="row" cdkDropList
+	(cdkDropListDropped)=" drop($event)" [cols]="cols" rowHeight="100px">
 	<mat-grid-tile fxFlex cdkDrag *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
 		[style.background]="tile.color">
 		<mat-grid-tile-header cdkDragHandle style="cursor: move;">
@@ -16,6 +16,9 @@
 
 			<div class="bar-chart" *ngSwitchCase="'GuageComponent'">
 				<app-guage></app-guage>
+			</div>
+			<div class="bar-chart" *ngSwitchCase="'LineComponent'">
+				<app-line></app-line>
 			</div>
 
 		</ng-container>
