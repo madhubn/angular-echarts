@@ -43,7 +43,7 @@ export class GridComponent implements OnInit {
     {
       text: "Text",
       cols: 1,
-      rows: 3,
+      rows: 2,
       color: "lightpink",
       id: "TextWidgetComponent"
     },
