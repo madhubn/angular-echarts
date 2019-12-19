@@ -48,7 +48,7 @@ import { TextWidgetComponent } from "./text-widget/text-widget.component";
 import { GuageComponent } from "./guage/guage.component";
 import { NgxEchartsModule } from "ngx-echarts";
 
-import { GaugeModule } from "angular-gauge";
+// import { GaugeModule } from "angular-gauge";
 const modules = [
   MatAutocompleteModule,
   MatButtonModule,
@@ -96,7 +96,7 @@ const modules = [
     MatNativeDateModule,
     ReactiveFormsModule,
     NgxEchartsModule,
-    GaugeModule.forRoot()
+    // GaugeModule.forRoot()
   ],
   declarations: [
     AppComponent,
