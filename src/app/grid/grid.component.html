@@ -2,20 +2,22 @@
 	fxLayoutAlign.sm="row" cdkDropList (cdkDropListDropped)=" drop($event)" [cols]="cols" rowHeight="100px">
 	<mat-grid-tile fxFlex cdkDrag *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
 		[style.background]="tile.color">
-		<mat-grid-tile-header cdkDragHandle style="cursor: move;" >
+		<mat-grid-tile-header cdkDragHandle style="cursor: move;">
 			<button mat-icon-button aria-label="Example icon-button with a heart icon">
            <i class="material-icons">more_vert</i>
        </button>
 			{{tile.text}}
 		</mat-grid-tile-header>
-		<div *ngIf="tile.id == 'TextWidgetComponent'">
-			<app-text-widget></app-text-widget>
-		</div>
-		<div *ngIf="tile.id == 'GuageComponent'">
-			<app-grid></app-grid>
-		</div>
-		<div *ngIf="tile.id == 'TextWidgetComponent1'">
-      ddd
-		</div>
+
+		<ng-container [ngSwitch]="tile.id">
+			<div class="bar-chart" *ngSwitchCase="'TextWidgetComponent'">
+				<app-text-widget></app-text-widget>
+			</div>
+
+			<div class="bar-chart" *ngSwitchCase="'GuageComponent'">
+				<app-guage></app-guage>
+			</div>
+
+		</ng-container>
 	</mat-grid-tile>
 </mat-grid-list>
