@@ -38,7 +38,7 @@ export class GridComponent implements OnInit {
       cols: 1,
       rows: 3,
       color: "lightgreen",
-      id: "GuageComponent"
+      id: "GuageComponent"  
     },
     {
       text: "Text",
