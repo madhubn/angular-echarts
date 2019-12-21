@@ -1,4 +1,4 @@
-<mat-drawer-container class="example-container">
+<!-- <mat-drawer-container class="example-container">
 	<mat-drawer-content>
 		<div fxLayout="row wrap" fxLayout.xs="column wrap" [dragula]='"bag-items"' [dragulaModel]='items'>
 			<mat-card class="handle" fxFlex.gt-xs="50%" fxLayoutGap="20px" [fxFlex.gt-md]="regularDistribution"
@@ -9,18 +9,20 @@
 			</mat-card>
 		</div>
 	</mat-drawer-content>
-</mat-drawer-container>
+</mat-drawer-container> -->
+
+
+
 
 
 <mat-drawer-container class="example-container">
 	<mat-drawer-content>
-		<div fxLayout="row wrap" fxLayout.xs="column wrap" [dragula]='"BAG"' [dragulaModel]='tiles'>
-			<mat-card fxFlex.gt-xs="50%" fxLayoutGap="20px" [fxFlex.gt-md]="regularDistribution"
-				*ngFor="let item of tiles">
-				<mat-card-header class="handle">
+		<div fxLayout="row" class="mb-20" fxLayout.xs="column" cdkDropList (cdkDropListDropped)="drop($event)"
+			fxLayoutGap="20px">
+			<mat-card fxFlex.gt-xs="50%" cdkDrag [fxFlex.gt-md]="regularDistribution" *ngFor="let item of tiles">
+				<mat-card-header cdkDragHandle style="cursor: move;">
 					<mat-card-title>{{item.text}}</mat-card-title>
 				</mat-card-header>
-				<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
 				<mat-card-content>
 					<p>
 						The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.

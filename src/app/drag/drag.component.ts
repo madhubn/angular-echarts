@@ -1,22 +1,17 @@
 import { Component, OnInit } from "@angular/core";
-import { DragulaService } from "ng2-dragula";
+
+import { moveItemInArray, CdkDragDrop } from "@angular/cdk/drag-drop";
 
 @Component({
   selector: "app-drag",
   templateUrl: "./drag.component.html",
-  styleUrls: ["./drag.component.css"],
-  providers: [DragulaService]
+  styleUrls: ["./drag.component.css"]
 })
 export class DragComponent implements OnInit {
   msg = "";
   BAG = "DRAGULA_EVENTS";
-  items = [
-    "Candlestick",
-    "Dagger",
-    "Revolver",
-    "Rope",
-    
-  ];
+  items = ["Candlestick", "Dagger", "Revolver", "Rope"];
+  vampires = ["Candlestick", "Dagger", "Revolver", "Rope"];
 
   tiles = [
     {
@@ -50,33 +45,17 @@ export class DragComponent implements OnInit {
   ];
 
   regularDistribution = 100 / 3 + "%";
-  constructor(private dragula: DragulaService) {
-    this.dragula.createGroup(this.BAG, {
-      moves: (el, container, handle) => {
-        return handle.className === 'handle';
-      }
-    });
+
+
+  constructor() {
+   
   }
 
   ngOnInit() {
-    // this.dragula.drop()(value => {
-    //   this.msg = `Dragging the ${value[1].innerText}!`;
-    // });
+   
+  }
 
-    this.dragula.drop(this.BAG).subscribe(({ el }) => {
-      console.log("hjjjjjjjjjjjj", el);
-    });
-
-    this.dragula.drag(this.BAG).subscribe(({ el }) => {
-      console.log("hjjjjjjjjjjjj", el);
-    });
-
-    // this.dragula.drop.subscribe(value => {
-    //   this.msg = `Dropped the ${value[1].innerText}!`;
-
-    //   setTimeout(() => {
-    //     this.msg = "";
-    //   }, 1000);
-    // });
+   drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.tiles, event.previousIndex, event.currentIndex);
   }
 }

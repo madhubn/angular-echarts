@@ -47,9 +47,9 @@ import { GridComponent } from "./grid/grid.component";
 import { TextWidgetComponent } from "./text-widget/text-widget.component";
 import { GuageComponent } from "./guage/guage.component";
 import { NgxEchartsModule } from "ngx-echarts";
-import { LineComponent } from './line/line.component';
-import { DragulaModule } from 'ng2-dragula';
-import { DragComponent } from './drag/drag.component';
+import { LineComponent } from "./line/line.component";
+import { DragulaModule, DragulaService } from "ng2-dragula";
+import { DragComponent } from "./drag/drag.component";
 
 // import { GaugeModule } from "angular-gauge";
 const modules = [
@@ -87,7 +87,6 @@ const modules = [
   MatTooltipModule,
   DragDropModule,
   FlexLayoutModule,
-   DragulaModule.forRoot()
 ];
 
 @NgModule({
@@ -100,6 +99,7 @@ const modules = [
     MatNativeDateModule,
     ReactiveFormsModule,
     NgxEchartsModule,
+    DragulaModule.forRoot()
     // GaugeModule.forRoot()
   ],
   declarations: [
@@ -111,6 +111,7 @@ const modules = [
     LineComponent,
     DragComponent
   ],
+  providers: [DragulaService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
