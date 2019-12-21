@@ -1,0 +1,11 @@
+<mat-drawer-container class="example-container">
+	<mat-drawer-content>
+		<div fxLayout="row wrap"  fxLayout.xs="column wrap" [dragula]='"bag-items"' [dragulaModel]='items'>
+			<mat-card fxFlex.gt-xs="50%" fxLayoutGap="20px" [fxFlex.gt-md]="regularDistribution" *ngFor="let item of items">
+				<mat-card-header>
+					{{item}}
+				</mat-card-header>
+			</mat-card>
+		</div>
+	</mat-drawer-content>
+</mat-drawer-container>

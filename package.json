@@ -16,6 +16,7 @@
     "@angular/router": "8.0.0",
     "core-js": "2.6.9",
     "echarts": "4.5.0",
+    "ng2-dragula": "^2.1.1",
     "ngx-echarts": "4.2.2",
     "rxjs": "6.5.3",
     "rxjs-compat": "6.5.3",

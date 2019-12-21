@@ -48,6 +48,8 @@ import { TextWidgetComponent } from "./text-widget/text-widget.component";
 import { GuageComponent } from "./guage/guage.component";
 import { NgxEchartsModule } from "ngx-echarts";
 import { LineComponent } from './line/line.component';
+import { DragulaModule } from 'ng2-dragula';
+import { DragComponent } from './drag/drag.component';
 
 // import { GaugeModule } from "angular-gauge";
 const modules = [
@@ -84,7 +86,8 @@ const modules = [
   MatToolbarModule,
   MatTooltipModule,
   DragDropModule,
-  FlexLayoutModule
+  FlexLayoutModule,
+  DragulaModule
 ];
 
 @NgModule({
@@ -105,7 +108,8 @@ const modules = [
     GridComponent,
     TextWidgetComponent,
     GuageComponent,
-    LineComponent
+    LineComponent,
+    DragComponent
   ],
   bootstrap: [AppComponent]
 })
