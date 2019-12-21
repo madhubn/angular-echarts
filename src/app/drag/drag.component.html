@@ -1,10 +1,37 @@
 <mat-drawer-container class="example-container">
 	<mat-drawer-content>
-		<div fxLayout="row wrap"  fxLayout.xs="column wrap" [dragula]='"bag-items"' [dragulaModel]='items'>
-			<mat-card fxFlex.gt-xs="50%" fxLayoutGap="20px" [fxFlex.gt-md]="regularDistribution" *ngFor="let item of items">
+		<div fxLayout="row wrap" fxLayout.xs="column wrap" [dragula]='"bag-items"' [dragulaModel]='items'>
+			<mat-card class="handle" fxFlex.gt-xs="50%" fxLayoutGap="20px" [fxFlex.gt-md]="regularDistribution"
+				*ngFor="let item of items">
 				<mat-card-header>
 					{{item}}
 				</mat-card-header>
+			</mat-card>
+		</div>
+	</mat-drawer-content>
+</mat-drawer-container>
+
+
+<mat-drawer-container class="example-container">
+	<mat-drawer-content>
+		<div fxLayout="row wrap" fxLayout.xs="column wrap" [dragula]='"BAG"' [dragulaModel]='tiles'>
+			<mat-card fxFlex.gt-xs="50%" fxLayoutGap="20px" [fxFlex.gt-md]="regularDistribution"
+				*ngFor="let item of tiles">
+				<mat-card-header class="handle">
+					<mat-card-title>{{item.text}}</mat-card-title>
+				</mat-card-header>
+				<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+				<mat-card-content>
+					<p>
+						The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+						A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+						bred for hunting.
+					</p>
+				</mat-card-content>
+				<mat-card-actions>
+					<button mat-button>LIKE</button>
+					<button mat-button>SHARE</button>
+				</mat-card-actions>
 			</mat-card>
 		</div>
 	</mat-drawer-content>

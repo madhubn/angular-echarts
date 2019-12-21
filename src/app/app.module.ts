@@ -87,7 +87,7 @@ const modules = [
   MatTooltipModule,
   DragDropModule,
   FlexLayoutModule,
-  DragulaModule
+   DragulaModule.forRoot()
 ];
 
 @NgModule({

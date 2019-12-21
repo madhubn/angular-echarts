@@ -15,30 +15,48 @@ export class DragComponent implements OnInit {
     "Dagger",
     "Revolver",
     "Rope",
-    "Pipe",
-    "Wrench1",
-    "Candlestick",
-    "Dagger1",
-    "Revolver1",
-    "Rope1",
-    "Pipe1",
-    "Wrench1",
-    "Revolver1",
-    "Rope1",
-    "Pipe1",
-    "Wrench1",
-    "Dagger1",
-    "Revolver1",
-    "Rope1",
-    "Pipe1",
-    "Wrench1",
-    "Revolver1",
-    "Rope1",
-    "Pipe1",
-    "Wrench2"
+    
   ];
-  regularDistribution = 100 / 3 + '%';
-  constructor(private dragula: DragulaService) {}
+
+  tiles = [
+    {
+      text: "Line",
+      cols: 2,
+      rows: 3,
+      color: "lightblue",
+      id: "LineComponent"
+    },
+    {
+      text: "Guage",
+      cols: 1,
+      rows: 3,
+      color: "lightgreen",
+      id: "GuageComponent"
+    },
+    {
+      text: "Text",
+      cols: 1,
+      rows: 2,
+      color: "lightpink",
+      id: "TextWidgetComponent"
+    },
+    {
+      text: "Bar",
+      cols: 2,
+      rows: 3,
+      color: "#DDBDF1",
+      id: "TextWidgetComponent1"
+    }
+  ];
+
+  regularDistribution = 100 / 3 + "%";
+  constructor(private dragula: DragulaService) {
+    this.dragula.createGroup(this.BAG, {
+      moves: (el, container, handle) => {
+        return handle.className === 'handle';
+      }
+    });
+  }
 
   ngOnInit() {
     // this.dragula.drop()(value => {
