@@ -6,6 +6,8 @@ import "rxjs/add/operator/takeWhile";
 import "rxjs/add/operator/startWith";
 import { MediaObserver, MediaChange } from "@angular/flex-layout";
 import { Subscription } from "rxjs";
+import { MatDialog } from "@angular/material";
+import { AddWidgetFormComponent } from "./../add-widget-form/add-widget-form.component";
 
 export interface Tile {
   color: string;
@@ -39,7 +41,7 @@ export class GridComponent implements OnInit {
       cols: 1,
       rows: 3,
       color: "lightgreen",
-      id: "GuageComponent"  
+      id: "GuageComponent"
     },
     {
       text: "Text",
@@ -57,7 +59,7 @@ export class GridComponent implements OnInit {
     }
   ];
 
-  constructor(private mediaObserver: MediaObserver) {}
+  constructor(private mediaObserver: MediaObserver, public dialog: MatDialog) {}
 
   ngOnInit() {
     this.getCol();
@@ -104,7 +106,25 @@ export class GridComponent implements OnInit {
     // }
   }
 
-   onResize(event) {
-    this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 3;
+  onResize(event) {
+    this.breakpoint = event.target.innerWidth <= 400 ? 1 : 3;
+  }
+
+  onAdd() {
+    const dialogRef = this.dialog.open(AddWidgetFormComponent, {
+      width: "250px",
+      data: {
+        rows: 2,
+        cols: 2,
+        id: "GuageComponent",
+        text: "",
+        color: ""
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("result", result);
+      this.tiles.push(result);
+    });
   }
 }

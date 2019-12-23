@@ -50,6 +50,7 @@ import { NgxEchartsModule } from "ngx-echarts";
 import { LineComponent } from "./line/line.component";
 import { DragulaModule, DragulaService } from "ng2-dragula";
 import { DragComponent } from "./drag/drag.component";
+import { AddWidgetFormComponent } from './add-widget-form/add-widget-form.component';
 
 // import { GaugeModule } from "angular-gauge";
 const modules = [
@@ -109,9 +110,12 @@ const modules = [
     TextWidgetComponent,
     GuageComponent,
     LineComponent,
-    DragComponent
+    DragComponent,
+    AddWidgetFormComponent
   ],
   providers: [DragulaService],
+  entryComponents:[AddWidgetFormComponent],
   bootstrap: [AppComponent]
+
 })
 export class AppModule {}
