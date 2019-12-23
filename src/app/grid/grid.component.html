@@ -4,29 +4,15 @@
 			(cdkDropListDropped)=" drop($event)" [cols]="cols" rowHeight="100px" (window:resize)="onResize($event)">
 			<mat-grid-tile fxFlex cdkDrag *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
 				md-colspan="12" [style.background]="tile.color">
-				<!-- <mat-grid-tile-header cdkDragHandle style="cursor: move;">
-			<button mat-icon-button aria-label="Example icon-button with a heart icon">
+
+				<mat-card [style.minHeight]="'100%'" [style.minWidth]="'100%'" [style.background]="tile.color">
+					<mat-card-header cdkDragHandle style="cursor: move;">
+						<button mat-icon-button aria-label="Example icon-button with a heart icon">
            <i class="material-icons">more_vert</i>
        </button>
-			{{tile.text}}
-		</mat-grid-tile-header>
-
-
-
-		<div style="width:100px" class="bar-chart" *ngIf="tile.id == 'TextWidgetComponent'">
-			<app-text-widget></app-text-widget>
-		</div>
-
-		<div style="width:100px" class="bar-chart" *ngIf="tile.id =='GuageComponent'">
-			<app-guage></app-guage>
-		</div>
-		<div style="width:100px" class="bar-chart dashboard-card" *ngIf="tile.id =='LineComponent'">
-			<app-line></app-line>
-		</div> -->
-				<mat-card [style.minHeight]="'100%'" [style.minWidth]="'100%'" [style.background]="tile.color">
-					<mat-card-header>
-						<mat-card-title>My Card</mat-card-title>
+						<mat-card-title> {{tile.text}}</mat-card-title>
 					</mat-card-header>
+					<mat-divider></mat-divider>
 					<mat-card-content [ngSwitch]="tile.id">
 						<app-text-widget *ngSwitchCase="'TextWidgetComponent'"></app-text-widget>
 						<app-guage *ngSwitchCase="'GuageComponent'"></app-guage>
