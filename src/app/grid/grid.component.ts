@@ -25,6 +25,7 @@ export class GridComponent implements OnInit {
   cols = 3;
   start: number;
   watcher: Subscription;
+  breakpoint: number;
   tiles: Tile[] = [
     {
       text: "Line",
@@ -101,5 +102,9 @@ export class GridComponent implements OnInit {
     // if (tiles !== null) {
     //   this.tiles = tiles;
     // }
+  }
+
+   onResize(event) {
+    this.breakpoint = (event.target.innerWidth <= 400) ? 1 : 3;
   }
 }

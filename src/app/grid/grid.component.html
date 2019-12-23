@@ -1,5 +1,5 @@
-<mat-grid-list fxLayout="row" fxLayout.xs="column" class="row-example" fxLayoutAlign.sm="row" cdkDropList
-	(cdkDropListDropped)=" drop($event)" [cols]="cols" rowHeight="100px">
+<mat-grid-list fxLayout="row" fxLayout.xs="column" class="row-example" fxLayoutAlign.sm="row" cdkDropList 
+	(cdkDropListDropped)=" drop($event)" [cols]="cols" rowHeight="100px" (window:resize)="onResize($event)">
 	<mat-grid-tile fxFlex cdkDrag *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows" md-colspan="12"
 		[style.background]="tile.color">
 		<mat-grid-tile-header cdkDragHandle style="cursor: move;">
@@ -10,18 +10,17 @@
 		</mat-grid-tile-header>
 
 
-		<ng-container [ngSwitch]="tile.id">
-			<div style="width:100px" class="bar-chart" *ngSwitchCase="'TextWidgetComponent'">
-				<app-text-widget></app-text-widget>
-			</div>
 
-			<div class="bar-chart" *ngSwitchCase="'GuageComponent'">
-				<app-guage></app-guage>
-			</div>
-			<div class="bar-chart dashboard-card" *ngSwitchCase="'LineComponent'">
-				<app-line></app-line>
-			</div>
+		<div style="width:100px" class="bar-chart" *ngIf="tile.id == 'TextWidgetComponent'">
+			<app-text-widget></app-text-widget>
+		</div>
 
-		</ng-container>
+		<div style="width:100px" class="bar-chart" *ngIf="tile.id =='GuageComponent'">
+			<app-guage></app-guage>
+		</div>
+		<div style="width:100px" class="bar-chart dashboard-card" *ngIf="tile.id =='LineComponent'">
+			<app-line></app-line>
+		</div>
+
 	</mat-grid-tile>
 </mat-grid-list>
