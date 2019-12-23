@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, AfterContentInit } from "@angular/core";
 import { moveItemInArray, CdkDragDrop } from "@angular/cdk/drag-drop";
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/map";
@@ -6,8 +6,9 @@ import "rxjs/add/operator/takeWhile";
 import "rxjs/add/operator/startWith";
 import { MediaObserver, MediaChange } from "@angular/flex-layout";
 import { Subscription } from "rxjs";
-import { MatDialog } from "@angular/material";
+import { MatDialog, MatGridList } from "@angular/material";
 import { AddWidgetFormComponent } from "./../add-widget-form/add-widget-form.component";
+import { Subject } from "rxjs";
 
 export interface Tile {
   color: string;
@@ -22,38 +23,49 @@ export interface Tile {
   templateUrl: "./grid.component.html",
   styleUrls: ["./grid.component.css"]
 })
-export class GridComponent implements OnInit {
-  grid = new Map([["xs", 1], ["sm", 2], ["md", 2], ["lg", 4], ["xl", 4]]);
-  cols = 2;
+export class GridComponent implements OnInit, AfterContentInit {
+  // grid = new Map([["xs", 1], ["sm", 2], ["md", 4], ["lg", 6], ["xl", 8]]);
+
+  gridByBreakpoint = {
+    xl: 4,
+    lg: 4,
+    md: 4,
+    sm: 2,
+    xs: 1
+  };
+
+  @ViewChild("grid", { static: true }) grid: MatGridList;
+  cols: Subject<any> = new Subject();
+
   start: number;
   watcher: Subscription;
   breakpoint: number;
   tiles: Tile[] = [
     {
       text: "Line",
-      cols: 2,
-      rows: 3,
+      cols: 1,
+      rows: 1,
       color: "lightblue",
       id: "LineComponent"
     },
     {
       text: "Guage",
       cols: 1,
-      rows: 3,
+      rows: 1,
       color: "lightgreen",
       id: "GuageComponent"
     },
     {
       text: "Text",
       cols: 1,
-      rows: 2,
+      rows: 1,
       color: "lightpink",
       id: "TextWidgetComponent"
     },
     {
       text: "Bar",
-      cols: 2,
-      rows: 3,
+      cols: 1,
+      rows: 1,
       color: "#DDBDF1",
       id: "TextWidgetComponent1"
     }
@@ -67,11 +79,11 @@ export class GridComponent implements OnInit {
   }
 
   getCol() {
-    this.grid.forEach((cols, mqAlias) => {
-      if (this.mediaObserver.isActive(mqAlias)) {
-        this.start = cols;
-      }
-    });
+    // this.grid.forEach((cols, mqAlias) => {
+    //   if (this.mediaObserver.isActive(mqAlias)) {
+    //     this.start = cols;
+    //   }
+    // });
     // this.cols = this.observableMedia
     //   .asObservable()
     //   .map(change => {
@@ -80,15 +92,20 @@ export class GridComponent implements OnInit {
     //     return this.grid.get(change.mqAlias);
     //   })
     //   .startWith(this.start);
+    // this.watcher = this.mediaObserver.media$.subscribe(
+    //   (change: MediaChange) => {
+    //     console.log("change.mqAlias", change.mqAlias);
+    //     this.cols = change ? this.grid.get(change.mqAlias) : 4;
+    //     if (change.mqAlias == "xs") {
+    //     }
+    //   }
+    // );
+  }
 
-    this.watcher = this.mediaObserver.media$.subscribe(
-      (change: MediaChange) => {
-        console.log("change.mqAlias", change.mqAlias);
-        this.cols = change ? this.grid.get(change.mqAlias) : 4;
-        if (change.mqAlias == "xs") {
-        }
-      }
-    );
+  ngAfterContentInit() {
+    this.mediaObserver.media$.subscribe((change: MediaChange) => {
+      this.cols.next(this.gridByBreakpoint[change.mqAlias]);
+    });
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -117,7 +134,7 @@ export class GridComponent implements OnInit {
         rows: 2,
         cols: 2,
         id: "GuageComponent",
-        text: "",
+        text: "GuageComponent",
         color: ""
       }
     });
@@ -126,5 +143,9 @@ export class GridComponent implements OnInit {
       console.log("result", result);
       this.tiles.push(result);
     });
+  }
+
+  identify(index, item) {
+    return item.id;
   }
 }
