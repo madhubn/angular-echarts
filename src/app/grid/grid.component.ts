@@ -21,8 +21,8 @@ export interface Tile {
   styleUrls: ["./grid.component.css"]
 })
 export class GridComponent implements OnInit {
-  grid = new Map([["xs", 1], ["sm", 2], ["md", 2], ["lg", 3], ["xl", 3]]);
-  cols = 3;
+  grid = new Map([["xs", 1], ["sm", 2], ["md", 2], ["lg", 4], ["xl", 4]]);
+  cols = 2;
   start: number;
   watcher: Subscription;
   breakpoint: number;
