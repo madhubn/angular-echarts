@@ -1,13 +1,12 @@
 <mat-drawer-container class="example-container">
 	<mat-drawer-content>
 		<button mat-raised-button color="primary" (click)="onAdd()">Primary</button>
-		<mat-grid-list #grid fxLayout="row" fxLayout.xs="column"  class="myGridList" fxLayoutAlign.sm="row" cdkDropList
-			(cdkDropListDropped)=" drop($event)" [cols]="cols" >
+		<mat-grid-list fxLayout="row" fxLayout.xs="column" class="myGridList" fxLayoutAlign.sm="row" cdkDropList
+			(cdkDropListDropped)=" drop($event)" [cols]="cols" gutterSize="10px">
 			<mat-grid-tile fxFlex cdkDrag *ngFor="let tile of tiles; trackBy:identify" [colspan]="tile.cols"
 				[rowspan]="tile.rows" md-colspan="12" [style.background]="tile.color">
 
-				<mat-card [style.minHeight]="'100%'" [style.minWidth]="'100%'" [style.background]="tile.color"
-					[ngSwitch]="tile.id">
+				<mat-card [style.background]="tile.color" [ngSwitch]="tile.id">
 					<mat-card-header cdkDragHandle style="cursor: move;">
 						<button mat-icon-button aria-label="Example icon-button with a heart icon">
             <i class="material-icons">more_vert</i>
