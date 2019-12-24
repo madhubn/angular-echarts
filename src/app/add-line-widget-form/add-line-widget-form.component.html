@@ -20,11 +20,11 @@
        </mat-form-field>
 
 					<mat-form-field fxflex>
-						<input matInput [(ngModel)]="data.xLabel" placeholder="X-Axis Label">
+						<input matInput [(ngModel)]="data.config.xLabel" placeholder="X-Axis Label">
                 </mat-form-field>
 						<mat-form-field fxflex>
-							<input matInput [cpPresetLabel]="data.xColor" placeholder="X-Axis Color"  [(colorPicker)]="data.xColor"
-                             [style.background]="data.xColor" [value]="data.xColor"
+							<input matInput [cpPresetLabel]="data.config.xColor" placeholder="X-Axis Color"  [(colorPicker)]="data.config.xColor"
+                             [style.background]="data.config.xColor" [value]="data.config.xColor"
                                    [cpSaveClickOutside]="true" [cpOKButton]="true" [cpOKButtonClass]="'btn btn-primary btn-xs'"
                                   [cpOKButtonText]="'Ok'"  [cpOutputFormat]="'hex'" [cpPosition]="'left'" />
                 </mat-form-field>

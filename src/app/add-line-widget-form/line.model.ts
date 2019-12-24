@@ -5,6 +5,10 @@ export class LineDTO {
   cols: number;
   rows: number;
   id: string;
-  xLabel: 'time';
-  xColor: 'red';
+  config = new LineCongifDTO();
+}
+
+export class LineCongifDTO {
+  xLabel: "time";
+  xColor: "red";
 }

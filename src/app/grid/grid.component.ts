@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild, AfterContentInit } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ChangeDetectorRef,
+  AfterContentInit
+} from "@angular/core";
 import { moveItemInArray, CdkDragDrop } from "@angular/cdk/drag-drop";
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/map";
@@ -9,7 +15,7 @@ import { Subscription } from "rxjs";
 import { MatDialog } from "@angular/material";
 import { AddWidgetFormComponent } from "./../add-widget-form/add-widget-form.component";
 import { AddLineWidgetFormComponent } from "./../add-line-widget-form/add-line-widget-form.component";
-import { LineDTO } from "./../add-line-widget-form/line.model";
+import { LineDTO, LineCongifDTO } from "./../add-line-widget-form/line.model";
 
 export interface Tile {
   cols: number;
@@ -19,6 +25,7 @@ export interface Tile {
   bgColor: any;
   titleColor: any;
   bgHeaderColor: any;
+  config: LineCongifDTO;
 }
 
 @Component({
@@ -44,7 +51,8 @@ export class GridComponent implements OnInit, AfterContentInit {
       bgColor: "lightblue",
       titleColor: "black",
       bgHeaderColor: "lightblue",
-      id: "LineComponent"
+      id: "LineComponent",
+      config: { xLabel: "time", xColor: "red" }
     },
     {
       name: "Guage",
@@ -53,7 +61,8 @@ export class GridComponent implements OnInit, AfterContentInit {
       bgColor: "lightgreen",
       titleColor: "black",
       bgHeaderColor: "lightgreen",
-      id: "GuageComponent"
+      id: "GuageComponent",
+      config: { xLabel: "time", xColor: "red" }
     },
     {
       name: "Text",
@@ -62,7 +71,8 @@ export class GridComponent implements OnInit, AfterContentInit {
       bgColor: "lightpink",
       bgHeaderColor: "lightpink",
       titleColor: "black",
-      id: "TextWidgetComponent"
+      id: "TextWidgetComponent",
+      config: { xLabel: "time", xColor: "red" }
     },
     {
       name: "Bar",
@@ -71,11 +81,16 @@ export class GridComponent implements OnInit, AfterContentInit {
       bgColor: "#DDBDF1",
       titleColor: "black",
       bgHeaderColor: "#DDBDF1",
-      id: "TextWidgetComponent1"
+      id: "TextWidgetComponent1",
+      config: { xLabel: "time", xColor: "red" }
     }
   ];
 
-  constructor(private mediaObserver: MediaObserver, public dialog: MatDialog) {}
+  constructor(
+    private mediaObserver: MediaObserver,
+    public dialog: MatDialog,
+    public cd: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.readFromLocalStorage();
@@ -164,7 +179,9 @@ export class GridComponent implements OnInit, AfterContentInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log("onEdit result", result);
-      this.result = result;
+      this.tiles[0] = result;
+      this.cd.markForCheck();
+      this.cd.detectChanges();
     });
   }
 
