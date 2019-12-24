@@ -4,5 +4,7 @@ export class LineDTO {
   titleColor: any;
   cols: number;
   rows: number;
-   id: string;
+  id: string;
+  xLabel: 'time';
+  xColor: 'red';
 }

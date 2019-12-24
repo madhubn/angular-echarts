@@ -1,11 +1,21 @@
-import { Component, OnInit } from "@angular/core";
+import {
+  Component,
+  Input,
+  OnInit,
+  OnChanges,
+  SimpleChanges
+} from "@angular/core";
 
 @Component({
   selector: "app-line",
   templateUrl: "./line.component.html",
   styleUrls: ["./line.component.css"]
 })
-export class LineComponent implements OnInit {
+export class LineComponent implements OnInit, OnChanges {
+  isLoading: boolean = true;
+  updateOptions: any;
+  @Input() result: any;
+
   options = {
     tooltip: {
       trigger: "axis",
@@ -83,5 +93,11 @@ export class LineComponent implements OnInit {
   };
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.isLoading = true;
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log("changes", changes);
+  }
 }

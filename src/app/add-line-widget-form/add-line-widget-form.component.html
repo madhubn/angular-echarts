@@ -1,30 +1,37 @@
 <h1 mat-dialog-title>Add</h1>
-<div mat-dialog-content>
+<div mat-dialog-content class="example-form">
 	<div fxLayout="column" fxLayout.xs="column">
 
 		<mat-form-field fxflex>
 			<input matInput type="text" placeholder="Name" [(ngModel)]="data.name" >
     </mat-form-field>
-			<div cols="6" fxFlex="100%">
-				<label>Background Color</label>
-				<input   [(colorPicker)]="data.bgColor"
+			<mat-form-field fxflex>
+				<input matInput [cpPresetLabel]="data.bgColor" placeholder="Background color"    [(colorPicker)]="data.bgColor"
             [style.background]="data.bgColor" [value]="data.bgColor"
             [cpSaveClickOutside]="true" [cpOKButton]="true" [cpOKButtonClass]="'btn btn-primary btn-xs'"
             [cpOKButtonText]="'Ok'"  [cpOutputFormat]="'hex'" [cpPosition]="'left'" />
-      </div>
+    </mat-form-field>
 
-				<div cols="6" fxFlex="100%">
-					<label>Title Color</label>
-					<input   [(colorPicker)]="data.titleColor"
+				<mat-form-field fxflex>
+					<input matInput [cpPresetLabel]="data.bgColor" placeholder="Title Color"  [(colorPicker)]="data.titleColor"
             [style.background]="data.titleColor" [value]="data.titleColor"
             [cpSaveClickOutside]="true" [cpOKButton]="true" [cpOKButtonClass]="'btn btn-primary btn-xs'"
             [cpOKButtonText]="'Ok'"  [cpOutputFormat]="'hex'" [cpPosition]="'left'" />
-      </div>
+       </mat-form-field>
 
+					<mat-form-field fxflex>
+						<input matInput [(ngModel)]="data.xLabel" placeholder="X-Axis Label">
+                </mat-form-field>
+						<mat-form-field fxflex>
+							<input matInput [cpPresetLabel]="data.xColor" placeholder="X-Axis Color"  [(colorPicker)]="data.xColor"
+                             [style.background]="data.xColor" [value]="data.xColor"
+                                   [cpSaveClickOutside]="true" [cpOKButton]="true" [cpOKButtonClass]="'btn btn-primary btn-xs'"
+                                  [cpOKButtonText]="'Ok'"  [cpOutputFormat]="'hex'" [cpPosition]="'left'" />
+                </mat-form-field>
 
-				</div>
-			</div>
-			<div mat-dialog-actions>
-				<button mat-button (click)="onNoClick()">No Thanks</button>
-				<button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
-			</div>
+	</div>
+</div>
+<div mat-dialog-actions>
+	<button mat-button (click)="onNoClick()">No Thanks</button>
+	<button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>

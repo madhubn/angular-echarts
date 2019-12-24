@@ -28,6 +28,7 @@ export interface Tile {
 })
 export class GridComponent implements OnInit, AfterContentInit {
   grid = new Map([["xs", 2], ["sm", 4], ["md", 4], ["lg", 8], ["xl", 8]]);
+  result: any;
 
   // @ViewChild("grid", { static: true }) grid: MatGridList;
   // cols: Subject<any> = new Subject();
@@ -163,6 +164,7 @@ export class GridComponent implements OnInit, AfterContentInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log("onEdit result", result);
+      this.result = result;
     });
   }
 
