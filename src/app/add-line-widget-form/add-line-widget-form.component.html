@@ -5,7 +5,7 @@
 		<mat-form-field fxflex>
 			<input matInput type="text" placeholder="Name" [(ngModel)]="data.name" >
     </mat-form-field>
-			<div fxFlex="100%">
+			<div cols="6" fxFlex="100%">
 				<label>Background Color</label>
 				<input   [(colorPicker)]="data.bgColor"
             [style.background]="data.bgColor" [value]="data.bgColor"
@@ -13,7 +13,7 @@
             [cpOKButtonText]="'Ok'"  [cpOutputFormat]="'hex'" [cpPosition]="'left'" />
       </div>
 
-				<div fxFlex="100%">
+				<div cols="6" fxFlex="100%">
 					<label>Title Color</label>
 					<input   [(colorPicker)]="data.titleColor"
             [style.background]="data.titleColor" [value]="data.titleColor"
@@ -21,16 +21,10 @@
             [cpOKButtonText]="'Ok'"  [cpOutputFormat]="'hex'" [cpPosition]="'left'" />
       </div>
 
-					<div fxFlex="100%">
-						<label>Haeder Background Color</label>
-						<input   [(colorPicker)]="data.bgHeaderColor"
-            [style.background]="data.bgHeaderColor" [value]="data.bgHeaderColor"
-            [cpSaveClickOutside]="true" [cpOKButton]="true" [cpOKButtonClass]="'btn btn-primary btn-xs'"
-            [cpOKButtonText]="'Ok'"  [cpOutputFormat]="'hex'" [cpPosition]="'left'" />
-         </div>
-					</div>
+
 				</div>
-				<div mat-dialog-actions>
-					<button mat-button (click)="onNoClick()">No Thanks</button>
-					<button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
-				</div>
+			</div>
+			<div mat-dialog-actions>
+				<button mat-button (click)="onNoClick()">No Thanks</button>
+				<button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+			</div>

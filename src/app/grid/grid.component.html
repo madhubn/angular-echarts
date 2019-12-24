@@ -7,9 +7,10 @@
 				md-colspan="12" [style.background]="tile.bgColor">
 
 				<mat-card class="card-container" [style.background]="tile.bgColor" [ngSwitch]="tile.id">
-					<mat-card-header fxLayout="row" fxLayoutAlign="center center" [style.background]="tile.bgHeaderColor" cdkDragHandle style="cursor: move;">
-						<mat-card-title fxLayoutAlign="start" [style.color]="tile.titleColor"> {{tile.name}}</mat-card-title>
-						<button mat-icon-button [matMenuTriggerFor]="menus" aria-label="Example icon-button with a menu">
+					<mat-card-header fxLayout="row" fxLayoutAlign="center center" cdkDragHandle style="cursor: move;">
+						<mat-card-title fxLayoutAlign="start" [style.color]="tile.titleColor"> {{tile.name}}
+						</mat-card-title>
+						<button mat-icon-button [matMenuTriggerFor]="menus"[style.color]="tile.titleColor" aria-label="Example icon-button with a menu">
                <mat-icon>more_vert</mat-icon>
            </button>
 						<mat-menu #menus="matMenu">
