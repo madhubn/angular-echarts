@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild, AfterContentInit } from "@angular/core";
 import { moveItemInArray, CdkDragDrop } from "@angular/cdk/drag-drop";
 import { Observable } from "rxjs/Observable";
 import "rxjs/add/operator/map";
@@ -8,6 +8,7 @@ import { MediaObserver, MediaChange } from "@angular/flex-layout";
 import { Subscription } from "rxjs";
 import { MatDialog } from "@angular/material";
 import { AddWidgetFormComponent } from "./../add-widget-form/add-widget-form.component";
+import { AddLineWidgetFormComponent } from "./../add-line-widget-form/add-line-widget-form.component";
 
 export interface Tile {
   color: string;
@@ -22,8 +23,8 @@ export interface Tile {
   templateUrl: "./grid.component.html",
   styleUrls: ["./grid.component.css"]
 })
-export class GridComponent implements OnInit {
-  grid = new Map([["xs", 1], ["sm", 2], ["md", 4], ["lg", 8], ["xl", 8]]);
+export class GridComponent implements OnInit, AfterContentInit {
+  grid = new Map([["xs", 2], ["sm", 4], ["md", 4], ["lg", 8], ["xl", 8]]);
 
   // @ViewChild("grid", { static: true }) grid: MatGridList;
   // cols: Subject<any> = new Subject();
@@ -65,7 +66,6 @@ export class GridComponent implements OnInit {
   constructor(private mediaObserver: MediaObserver, public dialog: MatDialog) {}
 
   ngOnInit() {
-    this.getCol();
     this.readFromLocalStorage();
   }
 
@@ -133,5 +133,28 @@ export class GridComponent implements OnInit {
 
   identify(index, item) {
     return item.id;
+  }
+
+  ngAfterContentInit() {
+    this.getCol();
+  }
+
+  onEdit(data: any) {
+    console.log("onEdit", data);
+    const dialogRef = this.dialog.open(AddLineWidgetFormComponent, {
+      width: "300px",
+      height: "100%",
+      disableClose: true,
+      position: { top: "0", right: "0", bottom: "0" },
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log("onEdit result", result);
+    });
+  }
+
+  onDelete(data: any) {
+    console.log("onDelete", data);
   }
 }

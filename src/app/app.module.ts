@@ -50,8 +50,9 @@ import { NgxEchartsModule } from "ngx-echarts";
 import { LineComponent } from "./line/line.component";
 import { DragulaModule, DragulaService } from "ng2-dragula";
 import { DragComponent } from "./drag/drag.component";
-import { AddWidgetFormComponent } from './add-widget-form/add-widget-form.component';
-
+import { AddWidgetFormComponent } from "./add-widget-form/add-widget-form.component";
+import { ColorPickerModule } from "ngx-color-picker";
+import { AddLineWidgetFormComponent } from "./add-line-widget-form/add-line-widget-form.component";
 // import { GaugeModule } from "angular-gauge";
 const modules = [
   MatAutocompleteModule,
@@ -88,6 +89,7 @@ const modules = [
   MatTooltipModule,
   DragDropModule,
   FlexLayoutModule,
+  ColorPickerModule
 ];
 
 @NgModule({
@@ -111,11 +113,11 @@ const modules = [
     GuageComponent,
     LineComponent,
     DragComponent,
-    AddWidgetFormComponent
+    AddWidgetFormComponent,
+    AddLineWidgetFormComponent
   ],
   providers: [DragulaService],
-  entryComponents:[AddWidgetFormComponent],
+  entryComponents: [AddWidgetFormComponent, AddLineWidgetFormComponent],
   bootstrap: [AppComponent]
-
 })
 export class AppModule {}
