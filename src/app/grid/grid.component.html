@@ -4,11 +4,11 @@
 		<mat-grid-list fxLayout="row" fxLayout.xs="column" class="myGridList" fxLayoutAlign.sm="row" cdkDropList
 			(cdkDropListDropped)=" drop($event)" [cols]="cols" gutterSize="10px">
 			<mat-grid-tile fxFlex cdkDrag *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
-				md-colspan="12" [style.background]="tile.color">
+				md-colspan="12" [style.background]="tile.bgColor">
 
-				<mat-card class="card-container" [style.background]="tile.color" [ngSwitch]="tile.id">
-					<mat-card-header fxLayout="row" fxLayoutAlign="center center" cdkDragHandle style="cursor: move;">
-						<mat-card-title fxLayoutAlign="start"> {{tile.text}}</mat-card-title>
+				<mat-card class="card-container" [style.background]="tile.bgColor" [ngSwitch]="tile.id">
+					<mat-card-header fxLayout="row" fxLayoutAlign="center center" [style.background]="tile.bgHeaderColor" cdkDragHandle style="cursor: move;">
+						<mat-card-title fxLayoutAlign="start" [style.color]="tile.titleColor"> {{tile.name}}</mat-card-title>
 						<button mat-icon-button [matMenuTriggerFor]="menus" aria-label="Example icon-button with a menu">
                <mat-icon>more_vert</mat-icon>
            </button>

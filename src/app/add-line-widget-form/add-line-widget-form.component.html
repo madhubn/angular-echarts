@@ -1,21 +1,36 @@
 <h1 mat-dialog-title>Add</h1>
 <div mat-dialog-content>
-	<!-- <mat-form-field>
-		<input matInput type="number" placeholder="row" [(ngModel)]="data.rows" value="0" min="2" max="5">
+	<div fxLayout="column" fxLayout.xs="column">
+
+		<mat-form-field fxflex>
+			<input matInput type="text" placeholder="Name" [(ngModel)]="data.name" >
     </mat-form-field>
-		<mat-form-field>
-			<input matInput type="number" placeholder="col" [(ngModel)]="data.cols" value="0" min="2" max="5">
-    </mat-form-field>
-			<mat-form-field>
-				<input matInput type="text" placeholder="color" [(ngModel)]="data.color">
-    </mat-form-field>
-				<mat-form-field>
-					<input matInput type="text" placeholder="Name" [(ngModel)]="data.text" >
-    </mat-form-field>
-					<mat-form-field>
-					</mat-form-field> -->
-</div>
-<div mat-dialog-actions>
-	<button mat-button (click)="onNoClick()">No Thanks</button>
-	<button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
-</div>
+			<div fxFlex="100%">
+				<label>Background Color</label>
+				<input   [(colorPicker)]="data.bgColor"
+            [style.background]="data.bgColor" [value]="data.bgColor"
+            [cpSaveClickOutside]="true" [cpOKButton]="true" [cpOKButtonClass]="'btn btn-primary btn-xs'"
+            [cpOKButtonText]="'Ok'"  [cpOutputFormat]="'hex'" [cpPosition]="'left'" />
+      </div>
+
+				<div fxFlex="100%">
+					<label>Title Color</label>
+					<input   [(colorPicker)]="data.titleColor"
+            [style.background]="data.titleColor" [value]="data.titleColor"
+            [cpSaveClickOutside]="true" [cpOKButton]="true" [cpOKButtonClass]="'btn btn-primary btn-xs'"
+            [cpOKButtonText]="'Ok'"  [cpOutputFormat]="'hex'" [cpPosition]="'left'" />
+      </div>
+
+					<div fxFlex="100%">
+						<label>Haeder Background Color</label>
+						<input   [(colorPicker)]="data.bgHeaderColor"
+            [style.background]="data.bgHeaderColor" [value]="data.bgHeaderColor"
+            [cpSaveClickOutside]="true" [cpOKButton]="true" [cpOKButtonClass]="'btn btn-primary btn-xs'"
+            [cpOKButtonText]="'Ok'"  [cpOutputFormat]="'hex'" [cpPosition]="'left'" />
+         </div>
+					</div>
+				</div>
+				<div mat-dialog-actions>
+					<button mat-button (click)="onNoClick()">No Thanks</button>
+					<button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+				</div>

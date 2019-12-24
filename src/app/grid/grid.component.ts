@@ -9,13 +9,16 @@ import { Subscription } from "rxjs";
 import { MatDialog } from "@angular/material";
 import { AddWidgetFormComponent } from "./../add-widget-form/add-widget-form.component";
 import { AddLineWidgetFormComponent } from "./../add-line-widget-form/add-line-widget-form.component";
+import { LineDTO } from "./../add-line-widget-form/line.model";
 
 export interface Tile {
-  color: string;
   cols: number;
   rows: number;
-  text: string;
   id: string;
+  name: string;
+  bgColor: any;
+  titleColor: any;
+  bgHeaderColor: any;
 }
 
 @Component({
@@ -34,31 +37,39 @@ export class GridComponent implements OnInit, AfterContentInit {
   breakpoint: number;
   tiles: Tile[] = [
     {
-      text: "Line",
+      name: "Line",
       cols: 2,
       rows: 2,
-      color: "lightblue",
+      bgColor: "lightblue",
+      titleColor: "black",
+      bgHeaderColor: "lightblue",
       id: "LineComponent"
     },
     {
-      text: "Guage",
+      name: "Guage",
       cols: 1,
       rows: 1,
-      color: "lightgreen",
+      bgColor: "lightgreen",
+      titleColor: "black",
+      bgHeaderColor: "lightgreen",
       id: "GuageComponent"
     },
     {
-      text: "Text",
+      name: "Text",
       cols: 1,
       rows: 1,
-      color: "lightpink",
+      bgColor: "lightpink",
+      bgHeaderColor: "lightpink",
+      titleColor: "black",
       id: "TextWidgetComponent"
     },
     {
-      text: "Bar",
+      name: "Bar",
       cols: 2,
       rows: 2,
-      color: "#DDBDF1",
+      bgColor: "#DDBDF1",
+      titleColor: "black",
+      bgHeaderColor: "#DDBDF1",
       id: "TextWidgetComponent1"
     }
   ];
@@ -141,12 +152,13 @@ export class GridComponent implements OnInit, AfterContentInit {
 
   onEdit(data: any) {
     console.log("onEdit", data);
+
     const dialogRef = this.dialog.open(AddLineWidgetFormComponent, {
       width: "300px",
       height: "100%",
       disableClose: true,
       position: { top: "0", right: "0", bottom: "0" },
-      data: {}
+      data: data
     });
 
     dialogRef.afterClosed().subscribe(result => {

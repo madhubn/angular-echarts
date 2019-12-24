@@ -1,9 +1,7 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
+import { LineDTO } from "./line.model";
 
-export interface DialogData {
-  color: string;
-}
 
 
 @Component({
@@ -14,7 +12,7 @@ export interface DialogData {
 export class AddLineWidgetFormComponent {
   constructor(
     public dialogRef: MatDialogRef<AddLineWidgetFormComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
+    @Inject(MAT_DIALOG_DATA) public data: LineDTO
   ) {}
 
   onNoClick(): void {
