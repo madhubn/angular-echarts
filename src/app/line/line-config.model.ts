@@ -53,6 +53,7 @@ export class Chart {
     paddingValue: number,
     nameGapValue: number,
     fontSizeValue: number,
+    labelColor: string,
     unit?: string
   ) {
     return [
@@ -65,7 +66,7 @@ export class Chart {
         },
         splitNumber: 5,
         nameTextStyle: {
-          // color: '#e08e02',
+          color: labelColor,
           fontSize: fontSizeValue,
           padding: paddingValue
         },
@@ -95,7 +96,7 @@ export class Chart {
       dataZoom: DATAZOOM,
       legend: this.legendOptions(),
       xAxis: this.xAxisForTime(config.xLabel, config.xColor),
-      yAxis: this.yAxisOption(config.xLabel, 10, 20, 14, config.xColor),
+      yAxis: this.yAxisOption(config.yLabel, 10, 20, 14, config.yColor),
       series: data
     };
   }

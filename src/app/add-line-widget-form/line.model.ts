@@ -10,7 +10,9 @@ export class LineDTO {
 }
 
 export class LineCongifDTO {
-  xLabel: "time";
+  xLabel: "Time";
   xColor: "red";
   sColor: "black";
+  yLabel: 'Value';
+  yColor: 'red';
 }

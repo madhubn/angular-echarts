@@ -28,6 +28,7 @@ export interface Tile {
   bgHeaderColor: any;
   config: LineCongifDTO;
   pkey: number;
+ 
 }
 
 @Component({
@@ -55,7 +56,13 @@ export class GridComponent implements OnInit, AfterContentInit {
       titleColor: "black",
       bgHeaderColor: "lightblue",
       id: "LineComponent",
-      config: { xLabel: "time", xColor: "red", sColor: "black" }
+      config: {
+        xLabel: "Time",
+        xColor: "red",
+        sColor: "black",
+        yLabel: "value",
+        yColor: "red"
+      }
     },
     {
       pkey: 2,
@@ -66,7 +73,13 @@ export class GridComponent implements OnInit, AfterContentInit {
       titleColor: "black",
       bgHeaderColor: "lightgreen",
       id: "GuageComponent",
-      config: { xLabel: "time", xColor: "red", sColor: "black" }
+      config: {
+        xLabel: "Time",
+        xColor: "red",
+        sColor: "black",
+        yLabel: "value",
+        yColor: "red"
+      }
     },
     {
       pkey: 3,
@@ -77,7 +90,13 @@ export class GridComponent implements OnInit, AfterContentInit {
       bgHeaderColor: "lightpink",
       titleColor: "black",
       id: "TextWidgetComponent",
-      config: { xLabel: "time", xColor: "red", sColor: "black" }
+      config: {
+        xLabel: "Time",
+        xColor: "red",
+        sColor: "black",
+        yLabel: "value",
+        yColor: "red"
+      }
     },
     {
       pkey: 4,
@@ -88,7 +107,13 @@ export class GridComponent implements OnInit, AfterContentInit {
       titleColor: "black",
       bgHeaderColor: "#DDBDF1",
       id: "BarComponent",
-      config: { xLabel: "time", xColor: "red", sColor: "black" }
+      config: {
+        xLabel: "Time",
+        xColor: "red",
+        sColor: "black",
+        yLabel: "value",
+        yColor: "red"
+      }
     }
   ];
 

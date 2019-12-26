@@ -35,6 +35,16 @@
                                   [cpOKButtonText]="'Ok'"  [cpOutputFormat]="'hex'" [cpPosition]="'left'" />
                 </mat-form-field>
 
+								<mat-form-field fxflex>
+									<input matInput [(ngModel)]="data.config.yLabel" placeholder="Y-Axis Label">
+                </mat-form-field>
+									<mat-form-field fxflex>
+										<input matInput [cpPresetLabel]="data.config.yColor" placeholder="Y-Axis Color"  [(colorPicker)]="data.config.yColor"
+                             [style.background]="data.config.yColor" [value]="data.config.yColor"
+                                   [cpSaveClickOutside]="true" [cpOKButton]="true" [cpOKButtonClass]="'btn btn-primary btn-xs'"
+                                  [cpOKButtonText]="'Ok'"  [cpOutputFormat]="'hex'" [cpPosition]="'left'" />
+                </mat-form-field>
+
 	</div>
 </div>
 <div mat-dialog-actions>
