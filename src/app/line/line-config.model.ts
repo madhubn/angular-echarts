@@ -124,10 +124,13 @@ export class Chart {
       }
     ];
   }
-  private dataZoom(show: boolean) {
+  private dataZoom(show: boolean, xColor: string) {
     return [
       {
-        show: show
+        show: show,
+        textStyle: {
+          color: xColor
+        }
       }
     ];
   }
@@ -139,7 +142,7 @@ export class Chart {
   getLineWidgetOptions(data: any, config: any) {
     return {
       tooltip: TOOLTIP,
-      dataZoom: this.dataZoom(config.dataZoom),
+      dataZoom: this.dataZoom(config.dataZoom, config.xColor),
       legend: this.legendOptions(),
       xAxis: this.xAxisForTime(config.xLabel, config.xColor),
       yAxis:
