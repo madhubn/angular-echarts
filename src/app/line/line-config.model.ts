@@ -18,7 +18,7 @@ const DATAZOOM = {
 };
 
 export class Chart {
-  private legendOptions(themeColor?: string, themeLabelColor?: string) {
+  private legendOptions(xColor?: string) {
     return [
       {
         show: true,
@@ -27,7 +27,10 @@ export class Chart {
           0, // right
           0, // down
           0 // left
-        ]
+        ],
+        textStyle: {
+          color: xColor
+        }
       }
     ];
   }
@@ -143,7 +146,7 @@ export class Chart {
     return {
       tooltip: TOOLTIP,
       dataZoom: this.dataZoom(config.dataZoom, config.xColor),
-      legend: this.legendOptions(),
+      legend: this.legendOptions(config.xColor),
       xAxis: this.xAxisForTime(config.xLabel, config.xColor),
       yAxis:
         config.yAxis === "Single"
