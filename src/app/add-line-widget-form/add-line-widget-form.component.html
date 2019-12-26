@@ -2,53 +2,80 @@
 <div mat-dialog-content class="example-form">
 	<div fxLayout="column" fxLayout.xs="column">
 
+		<!-- title -->
 		<mat-form-field fxflex>
 			<input matInput type="text" placeholder="Name" [(ngModel)]="data.name" >
     </mat-form-field>
+			<!-- bgColor -->
 			<mat-form-field fxflex>
 				<input matInput [cpPresetLabel]="data.bgColor" placeholder="Background color"    [(colorPicker)]="data.bgColor"
             [style.background]="data.bgColor" [value]="data.bgColor"
             [cpSaveClickOutside]="true" [cpOKButton]="true" [cpOKButtonClass]="'btn btn-primary btn-xs'"
             [cpOKButtonText]="'Ok'"  [cpOutputFormat]="'hex'" [cpPosition]="'left'" />
     </mat-form-field>
-
+				<!-- titleColor -->
 				<mat-form-field fxflex>
-					<input matInput [cpPresetLabel]="data.bgColor" placeholder="Title Color"  [(colorPicker)]="data.titleColor"
+					<input matInput [cpPresetLabel]="data.titleColor" placeholder="Title Color"  [(colorPicker)]="data.titleColor"
             [style.background]="data.titleColor" [value]="data.titleColor"
             [cpSaveClickOutside]="true" [cpOKButton]="true" [cpOKButtonClass]="'btn btn-primary btn-xs'"
             [cpOKButtonText]="'Ok'"  [cpOutputFormat]="'hex'" [cpPosition]="'left'" />
        </mat-form-field>
-
+					<!-- xLabel -->
 					<mat-form-field fxflex>
 						<input matInput [(ngModel)]="data.config.xLabel" placeholder="X-Axis Label">
                 </mat-form-field>
+						<!-- xColor -->
 						<mat-form-field fxflex>
 							<input matInput [cpPresetLabel]="data.config.xColor" placeholder="X-Axis Color"  [(colorPicker)]="data.config.xColor"
                              [style.background]="data.config.xColor" [value]="data.config.xColor"
                                    [cpSaveClickOutside]="true" [cpOKButton]="true" [cpOKButtonClass]="'btn btn-primary btn-xs'"
                                   [cpOKButtonText]="'Ok'"  [cpOutputFormat]="'hex'" [cpPosition]="'left'" />
                 </mat-form-field>
+							<!-- axis -->
+							<section class="example-section">
+								<label class="example-margin">Y-axis:</label>
+								<mat-radio-group [(ngModel)]="data.config.yAxis">
+									<mat-radio-button class="example-margin" value="Single">Single</mat-radio-button>
+									<mat-radio-button class="example-margin" value="Dual">Dual</mat-radio-button>
+								</mat-radio-group>
+							</section>
+							<!-- yLabel -->
 							<mat-form-field fxflex>
-								<input matInput [cpPresetLabel]="data.config.sColor" placeholder="Series Color"  [(colorPicker)]="data.config.sColor"
+								<input matInput [(ngModel)]="data.config.yLabel" placeholder="Y-Axis Label">
+                </mat-form-field>
+								<!-- yColor -->
+								<mat-form-field fxflex>
+									<input matInput [cpPresetLabel]="data.config.yColor" placeholder="Y-Axis Color"  [(colorPicker)]="data.config.yColor"
+                             [style.background]="data.config.yColor" [value]="data.config.yColor"
+                                   [cpSaveClickOutside]="true" [cpOKButton]="true" [cpOKButtonClass]="'btn btn-primary btn-xs'"
+                                  [cpOKButtonText]="'Ok'"  [cpOutputFormat]="'hex'" [cpPosition]="'left'" />
+                </mat-form-field>
+									<!-- yLabel1 -->
+									<mat-form-field *ngIf="data.config.yAxis === 'Dual'" fxflex>
+										<input matInput [(ngModel)]="data.config.yLabel1" placeholder="Y-Axis 2 Label">
+                </mat-form-field>
+										<!-- yColor1 -->
+										<mat-form-field fxflex *ngIf="data.config.yAxis === 'Dual'">
+											<input matInput [cpPresetLabel]="data.config.yColor1" placeholder="Y-Axis 2 Color"  [(colorPicker)]="data.config.yColor1"
+                             [style.background]="data.config.yColor1" [value]="data.config.yColor1"
+                                   [cpSaveClickOutside]="true" [cpOKButton]="true" [cpOKButtonClass]="'btn btn-primary btn-xs'"
+                                  [cpOKButtonText]="'Ok'"  [cpOutputFormat]="'hex'" [cpPosition]="'left'" />
+                </mat-form-field>
+											<!-- sColor -->
+											<mat-form-field fxflex>
+												<input matInput [cpPresetLabel]="data.config.sColor" placeholder="Series Color"  [(colorPicker)]="data.config.sColor"
                              [style.background]="data.config.sColor" [value]="data.config.sColor"
                                    [cpSaveClickOutside]="true" [cpOKButton]="true" [cpOKButtonClass]="'btn btn-primary btn-xs'"
                                   [cpOKButtonText]="'Ok'"  [cpOutputFormat]="'hex'" [cpPosition]="'left'" />
                 </mat-form-field>
 
-								<mat-form-field fxflex>
-									<input matInput [(ngModel)]="data.config.yLabel" placeholder="Y-Axis Label">
-                </mat-form-field>
-									<mat-form-field fxflex>
-										<input matInput [cpPresetLabel]="data.config.yColor" placeholder="Y-Axis Color"  [(colorPicker)]="data.config.yColor"
-                             [style.background]="data.config.yColor" [value]="data.config.yColor"
-                                   [cpSaveClickOutside]="true" [cpOKButton]="true" [cpOKButtonClass]="'btn btn-primary btn-xs'"
-                                  [cpOKButtonText]="'Ok'"  [cpOutputFormat]="'hex'" [cpPosition]="'left'" />
-                </mat-form-field>
 
-										<section class="example-section">
-											<mat-checkbox class="example-margin" [(ngModel)]="data.config.dataZoom">Zoom
-											</mat-checkbox>
-										</section>
+
+												<section class="example-section">
+													<mat-checkbox class="example-margin"
+														[(ngModel)]="data.config.dataZoom">Zoom
+													</mat-checkbox>
+												</section>
 
 	</div>
 </div>

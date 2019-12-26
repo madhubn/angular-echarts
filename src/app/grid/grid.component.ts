@@ -61,7 +61,10 @@ export class GridComponent implements OnInit, AfterContentInit {
         sColor: "black",
         yLabel: "value",
         yColor: "red",
-        dataZoom: false
+        dataZoom: false,
+        yAxis: "Single",
+        yLabel1: "Value",
+        yColor1: "red"
       }
     },
     {
@@ -79,7 +82,10 @@ export class GridComponent implements OnInit, AfterContentInit {
         sColor: "black",
         yLabel: "value",
         yColor: "red",
-        dataZoom: false
+        dataZoom: false,
+        yAxis: "Single",
+        yLabel1: "Value",
+        yColor1: "red"
       }
     },
     {
@@ -97,7 +103,10 @@ export class GridComponent implements OnInit, AfterContentInit {
         sColor: "black",
         yLabel: "value",
         yColor: "red",
-        dataZoom: false
+        dataZoom: false,
+        yAxis: "Single",
+        yLabel1: "Value",
+        yColor1: "red"
       }
     },
     {
@@ -115,7 +124,10 @@ export class GridComponent implements OnInit, AfterContentInit {
         sColor: "black",
         yLabel: "value",
         yColor: "red",
-        dataZoom: false
+        dataZoom: false,
+        yAxis: "Single",
+        yLabel1: "Value",
+        yColor1: "red"
       }
     }
   ];

@@ -15,5 +15,8 @@ export class LineCongifDTO {
   sColor: "black";
   yLabel: "Value";
   yColor: "red";
+  yAxis: "Single";
+  yLabel1: "Value";
+  yColor1: "red";
   dataZoom: false;
 }

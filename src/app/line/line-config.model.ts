@@ -74,6 +74,37 @@ export class Chart {
       }
     ];
   }
+  private dualYAxisOption(config: any, unit?: string) {
+    return [
+      {
+        type: "value",
+        name: config.yLabel,
+        position: "right",
+        axisLine: {
+          lineStyle: {
+            color: config.yColor
+          }
+        },
+        axisLabel: {
+          formatter: `value ${unit === undefined ? "" : `( ${unit} )`}`
+        }
+      },
+
+      {
+        type: "value",
+        name: config.yLabel1,
+        position: "left",
+        axisLine: {
+          lineStyle: {
+            color: config.yColor1
+          }
+        },
+        axisLabel: {
+          formatter: `value ${unit === undefined ? "" : `( ${unit} )`}`
+        }
+      }
+    ];
+  }
   private dataZoom(show: boolean) {
     return [
       {
@@ -92,7 +123,10 @@ export class Chart {
       dataZoom: this.dataZoom(config.dataZoom),
       legend: this.legendOptions(),
       xAxis: this.xAxisForTime(config.xLabel, config.xColor),
-      yAxis: this.yAxisOption(config.yLabel, 10, 20, 14, config.yColor),
+      yAxis:
+        config.yAxis === "Single"
+          ? this.yAxisOption(config.yLabel, 10, 20, 14, config.yColor)
+          : this.dualYAxisOption(config),
       series: data
     };
   }
