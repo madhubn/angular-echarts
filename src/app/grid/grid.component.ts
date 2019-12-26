@@ -28,7 +28,6 @@ export interface Tile {
   bgHeaderColor: any;
   config: LineCongifDTO;
   pkey: number;
- 
 }
 
 @Component({
@@ -61,7 +60,8 @@ export class GridComponent implements OnInit, AfterContentInit {
         xColor: "red",
         sColor: "black",
         yLabel: "value",
-        yColor: "red"
+        yColor: "red",
+        dataZoom: false
       }
     },
     {
@@ -78,7 +78,8 @@ export class GridComponent implements OnInit, AfterContentInit {
         xColor: "red",
         sColor: "black",
         yLabel: "value",
-        yColor: "red"
+        yColor: "red",
+        dataZoom: false
       }
     },
     {
@@ -95,7 +96,8 @@ export class GridComponent implements OnInit, AfterContentInit {
         xColor: "red",
         sColor: "black",
         yLabel: "value",
-        yColor: "red"
+        yColor: "red",
+        dataZoom: false
       }
     },
     {
@@ -112,7 +114,8 @@ export class GridComponent implements OnInit, AfterContentInit {
         xColor: "red",
         sColor: "black",
         yLabel: "value",
-        yColor: "red"
+        yColor: "red",
+        dataZoom: false
       }
     }
   ];

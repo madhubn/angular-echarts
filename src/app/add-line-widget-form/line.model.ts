@@ -13,6 +13,7 @@ export class LineCongifDTO {
   xLabel: "Time";
   xColor: "red";
   sColor: "black";
-  yLabel: 'Value';
-  yColor: 'red';
+  yLabel: "Value";
+  yColor: "red";
+  dataZoom: false;
 }

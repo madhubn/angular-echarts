@@ -74,14 +74,10 @@ export class Chart {
       }
     ];
   }
-  private seriesData(result: any, tagName: string) {
+  private dataZoom(show: boolean) {
     return [
       {
-        data: result,
-        name: tagName,
-        showSymbol: false,
-        hoverAnimation: false,
-        type: "line"
+        show: show
       }
     ];
   }
@@ -93,7 +89,7 @@ export class Chart {
   getLineWidgetOptions(data: any, config: any) {
     return {
       tooltip: TOOLTIP,
-      dataZoom: DATAZOOM,
+      dataZoom: this.dataZoom(config.dataZoom),
       legend: this.legendOptions(),
       xAxis: this.xAxisForTime(config.xLabel, config.xColor),
       yAxis: this.yAxisOption(config.yLabel, 10, 20, 14, config.yColor),
