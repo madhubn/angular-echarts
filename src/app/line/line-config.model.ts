@@ -85,9 +85,6 @@ export class Chart {
             color: config.yColor
           }
         },
-        axisLabel: {
-          formatter: `value ${unit === undefined ? "" : `( ${unit} )`}`
-        }
       },
 
       {
@@ -98,9 +95,6 @@ export class Chart {
           lineStyle: {
             color: config.yColor1
           }
-        },
-        axisLabel: {
-          formatter: `value ${unit === undefined ? "" : `( ${unit} )`}`
         }
       }
     ];
@@ -124,7 +118,7 @@ export class Chart {
       legend: this.legendOptions(),
       xAxis: this.xAxisForTime(config.xLabel, config.xColor),
       yAxis:
-        config.yAxis === "Single"
+        config.yAxis === "'Single'"
           ? this.yAxisOption(config.yLabel, 10, 20, 14, config.yColor)
           : this.dualYAxisOption(config),
       series: data
