@@ -40,9 +40,15 @@ export class Chart {
         splitLine: {
           show: true
         },
+        nameLocation: "middle",
         nameTextStyle: {
           color: labelColor,
           fontSize: 13
+        },
+        axisLine: {
+          lineStyle: {
+            color: labelColor
+          }
         }
       }
     ];
@@ -63,6 +69,11 @@ export class Chart {
         nameLocation: "middle",
         splitLine: {
           show: true
+        },
+        axisLine: {
+          lineStyle: {
+            color: labelColor
+          }
         },
         splitNumber: 5,
         nameTextStyle: {
@@ -85,6 +96,13 @@ export class Chart {
             color: config.yColor
           }
         },
+        nameLocation: "middle",
+        nameTextStyle: {
+          color: config.yColor,
+          fontSize: 14,
+          padding: 10
+        },
+        nameGap: 20
       },
 
       {
@@ -95,7 +113,14 @@ export class Chart {
           lineStyle: {
             color: config.yColor1
           }
-        }
+        },
+        nameLocation: "middle",
+        nameTextStyle: {
+          color: config.yColor1,
+          fontSize: 14,
+          padding: 10
+        },
+        nameGap: 20
       }
     ];
   }
@@ -118,7 +143,7 @@ export class Chart {
       legend: this.legendOptions(),
       xAxis: this.xAxisForTime(config.xLabel, config.xColor),
       yAxis:
-        config.yAxis === "'Single'"
+        config.yAxis === "Single"
           ? this.yAxisOption(config.yLabel, 10, 20, 14, config.yColor)
           : this.dualYAxisOption(config),
       series: data

@@ -99,14 +99,14 @@ export class GridComponent implements OnInit, AfterContentInit {
       id: "TextWidgetComponent",
       config: {
         xLabel: "Time",
-        xColor: "red",
-        sColor: "black",
+        xColor: "black",
+        sColor: "red",
         yLabel: "value",
-        yColor: "red",
+        yColor: "black",
         dataZoom: false,
         yAxis: "Single",
         yLabel1: "Value",
-        yColor1: "red"
+        yColor1: "black"
       }
     },
     {
@@ -120,14 +120,14 @@ export class GridComponent implements OnInit, AfterContentInit {
       id: "BarComponent",
       config: {
         xLabel: "Time",
-        xColor: "red",
-        sColor: "black",
+        xColor: "black",
+        sColor: "red",
         yLabel: "value",
-        yColor: "red",
+        yColor: "black",
         dataZoom: false,
         yAxis: "Single",
         yLabel1: "Value",
-        yColor1: "red"
+        yColor1: "black"
       }
     }
   ];
