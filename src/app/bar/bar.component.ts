@@ -31,7 +31,7 @@ export class BarComponent implements OnInit {
     const option = this.data;
     let newValue: any;
     const b = {
-      lineStyle: {
+      itemStyle: {
         color: color
       }
     };

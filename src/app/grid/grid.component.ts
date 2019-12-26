@@ -82,7 +82,7 @@ export class GridComponent implements OnInit, AfterContentInit {
     {
       pkey: 4,
       name: "Bar",
-      cols: 2,
+      cols: 3,
       rows: 2,
       bgColor: "#DDBDF1",
       titleColor: "black",
@@ -197,7 +197,7 @@ export class GridComponent implements OnInit, AfterContentInit {
   }
 
   personIdentity(index, item) {
-    console.log("TrackBy:", item.item, "at index", index);
+    // console.log("TrackBy:", item.item, "at index", index);
     return item.pkey;
   }
 }
