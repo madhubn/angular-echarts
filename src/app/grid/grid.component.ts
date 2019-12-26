@@ -17,6 +17,7 @@ import { AddWidgetFormComponent } from "./../add-widget-form/add-widget-form.com
 import { AddLineWidgetFormComponent } from "./../add-line-widget-form/add-line-widget-form.component";
 import { LineDTO, LineCongifDTO } from "./../add-line-widget-form/line.model";
 
+import * as _ from "lodash";
 export interface Tile {
   cols: number;
   rows: number;
@@ -26,6 +27,7 @@ export interface Tile {
   titleColor: any;
   bgHeaderColor: any;
   config: LineCongifDTO;
+  pkey: number;
 }
 
 @Component({
@@ -35,7 +37,7 @@ export interface Tile {
 })
 export class GridComponent implements OnInit, AfterContentInit {
   grid = new Map([["xs", 2], ["sm", 4], ["md", 4], ["lg", 8], ["xl", 8]]);
-  result: any;
+  result1: any;
 
   // @ViewChild("grid", { static: true }) grid: MatGridList;
   // cols: Subject<any> = new Subject();
@@ -45,16 +47,18 @@ export class GridComponent implements OnInit, AfterContentInit {
   breakpoint: number;
   tiles: Tile[] = [
     {
+      pkey: 1,
       name: "Line",
-      cols: 2,
+      cols: 3,
       rows: 2,
       bgColor: "lightblue",
       titleColor: "black",
       bgHeaderColor: "lightblue",
       id: "LineComponent",
-      config: { xLabel: "time", xColor: "red" }
+      config: { xLabel: "time", xColor: "red", sColor: "black" }
     },
     {
+      pkey: 2,
       name: "Guage",
       cols: 1,
       rows: 1,
@@ -62,9 +66,10 @@ export class GridComponent implements OnInit, AfterContentInit {
       titleColor: "black",
       bgHeaderColor: "lightgreen",
       id: "GuageComponent",
-      config: { xLabel: "time", xColor: "red" }
+      config: { xLabel: "time", xColor: "red", sColor: "black" }
     },
     {
+      pkey: 3,
       name: "Text",
       cols: 1,
       rows: 1,
@@ -72,17 +77,18 @@ export class GridComponent implements OnInit, AfterContentInit {
       bgHeaderColor: "lightpink",
       titleColor: "black",
       id: "TextWidgetComponent",
-      config: { xLabel: "time", xColor: "red" }
+      config: { xLabel: "time", xColor: "red", sColor: "black" }
     },
     {
+      pkey: 4,
       name: "Bar",
       cols: 2,
       rows: 2,
       bgColor: "#DDBDF1",
       titleColor: "black",
       bgHeaderColor: "#DDBDF1",
-      id: "TextWidgetComponent1",
-      config: { xLabel: "time", xColor: "red" }
+      id: "BarComponent",
+      config: { xLabel: "time", xColor: "red", sColor: "black" }
     }
   ];
 
@@ -144,6 +150,7 @@ export class GridComponent implements OnInit, AfterContentInit {
     const dialogRef = this.dialog.open(AddWidgetFormComponent, {
       width: "250px",
       data: {
+        pkey: 5,
         rows: 2,
         cols: 2,
         id: "GuageComponent",
@@ -166,7 +173,7 @@ export class GridComponent implements OnInit, AfterContentInit {
     this.getCol();
   }
 
-  onEdit(data: any) {
+  onEdit(data: any, index: number) {
     console.log("onEdit", data);
 
     const dialogRef = this.dialog.open(AddLineWidgetFormComponent, {
@@ -179,13 +186,18 @@ export class GridComponent implements OnInit, AfterContentInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log("onEdit result", result);
-      this.tiles[0] = result;
-      this.cd.markForCheck();
+      this.tiles[index] = result;
+      this.tiles = _.cloneDeep(this.tiles);
       this.cd.detectChanges();
     });
   }
 
   onDelete(data: any) {
     console.log("onDelete", data);
+  }
+
+  personIdentity(index, item) {
+    console.log("TrackBy:", item.item, "at index", index);
+    return item.pkey;
   }
 }

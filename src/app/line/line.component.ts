@@ -5,7 +5,6 @@ import {
   OnChanges,
   SimpleChanges
 } from "@angular/core";
-
 import { Chart } from "./line-config.model";
 
 @Component({
@@ -16,18 +15,28 @@ import { Chart } from "./line-config.model";
 export class LineComponent implements OnInit, OnChanges {
   isLoading: boolean = true;
   updateOptions: any;
-  @Input() result: any;
+  @Input() result1: any;
   options: any;
   chart = new Chart();
   data = [
     {
       name: "X-1",
       type: "line",
-      stack: "counts",
-      areaStyle: { normal: {} },
       data: [120, 132, 101, 134, 90, 230, 210]
     }
   ];
+
+  yAxisOptionKPI(color: string) {
+    const option = this.data;
+    let newValue: any;
+    const b = {
+      lineStyle: {
+        color: color
+      }
+    };
+    const c = Object.assign({}, option[0], b);
+    return [c];
+  }
 
   // options = {
   //   tooltip: {
@@ -107,11 +116,16 @@ export class LineComponent implements OnInit, OnChanges {
   constructor() {}
 
   ngOnInit() {
-    this.isLoading = true;
+    console.log("changes", this.result1);
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log("changes", changes);
-    // this.options = this.chart.getLineWidgetOptions(this.data);
+    console.log("changes", changes["result1"].currentValue);
+    this.isLoading = true;
+    const data = changes["result1"].currentValue;
+    this.options = this.chart.getLineWidgetOptions(
+      this.yAxisOptionKPI(data.config.sColor),
+      data.config
+    );
   }
 }

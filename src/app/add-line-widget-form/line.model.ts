@@ -4,6 +4,7 @@ export class LineDTO {
   titleColor: any;
   cols: number;
   rows: number;
+  pkey: number;
   id: string;
   config = new LineCongifDTO();
 }
@@ -11,4 +12,5 @@ export class LineDTO {
 export class LineCongifDTO {
   xLabel: "time";
   xColor: "red";
+  sColor: "black";
 }

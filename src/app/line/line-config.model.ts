@@ -32,16 +32,16 @@ export class Chart {
     ];
   }
   /**** X-axis time series */
-  private xAxisForTime(themeColor?: string, themeLabelColor?: string) {
+  private xAxisForTime(label: string, labelColor: string) {
     return [
       {
         type: "time",
-        name: "Time",
+        name: label,
         splitLine: {
           show: true
         },
         nameTextStyle: {
-          // color: themeLabelColor,
+          color: labelColor,
           fontSize: 13
         }
       }
@@ -95,8 +95,8 @@ export class Chart {
       dataZoom: DATAZOOM,
       legend: this.legendOptions(),
       xAxis: this.xAxisForTime(config.xLabel, config.xColor),
-      yAxis: this.yAxisOption(config.xLabel, 10, 20, 14,config.xColor),
-      series: this.seriesData(data, config.xLabel)
+      yAxis: this.yAxisOption(config.xLabel, 10, 20, 14, config.xColor),
+      series: data
     };
   }
 }

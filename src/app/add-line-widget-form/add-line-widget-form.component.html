@@ -28,6 +28,12 @@
                                    [cpSaveClickOutside]="true" [cpOKButton]="true" [cpOKButtonClass]="'btn btn-primary btn-xs'"
                                   [cpOKButtonText]="'Ok'"  [cpOutputFormat]="'hex'" [cpPosition]="'left'" />
                 </mat-form-field>
+							<mat-form-field fxflex>
+								<input matInput [cpPresetLabel]="data.config.sColor" placeholder="Series Color"  [(colorPicker)]="data.config.sColor"
+                             [style.background]="data.config.sColor" [value]="data.config.sColor"
+                                   [cpSaveClickOutside]="true" [cpOKButton]="true" [cpOKButtonClass]="'btn btn-primary btn-xs'"
+                                  [cpOKButtonText]="'Ok'"  [cpOutputFormat]="'hex'" [cpPosition]="'left'" />
+                </mat-form-field>
 
 	</div>
 </div>

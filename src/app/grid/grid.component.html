@@ -3,8 +3,8 @@
 		<button mat-raised-button color="primary" (click)="onAdd()">Primary</button>
 		<mat-grid-list fxLayout="row" fxLayout.xs="column" class="myGridList" fxLayoutAlign.sm="row" cdkDropList
 			(cdkDropListDropped)=" drop($event)" [cols]="cols" gutterSize="10px">
-			<mat-grid-tile fxFlex cdkDrag *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
-				md-colspan="12" [style.background]="tile.bgColor">
+			<mat-grid-tile fxFlex cdkDrag *ngFor="let tile of tiles;  trackBy:personIdentity;let indx = index"
+				[colspan]="tile.cols" [rowspan]="tile.rows" md-colspan="12" [style.background]="tile.bgColor">
 
 				<mat-card class="card-container" [style.background]="tile.bgColor" [ngSwitch]="tile.id">
 					<mat-card-header fxLayout="row" fxLayoutAlign="center center" cdkDragHandle style="cursor: move;">
@@ -15,7 +15,7 @@
            </button>
 						<mat-menu #menus="matMenu">
 							<button mat-menu-item >
-   	              <button mat-icon-button (click)="onEdit(tile)" aria-label="Example icon-button with a menu">
+   	              <button mat-icon-button (click)="onEdit(tile,indx)" aria-label="Example icon-button with a menu">
                <mat-icon>edit</mat-icon>
               </button>
 							</button>
@@ -30,7 +30,8 @@
 					<mat-card-content>
 						<app-text-widget *ngSwitchCase="'TextWidgetComponent'"></app-text-widget>
 						<app-guage *ngSwitchCase="'GuageComponent'"></app-guage>
-						<app-line [result]="tile" *ngSwitchCase="'LineComponent'"></app-line>
+						<app-line [result1]="tile" *ngSwitchCase="'LineComponent'"></app-line>
+						<app-bar [result1]="tile" *ngSwitchCase="'BarComponent'"></app-bar>
 					</mat-card-content>
 				</mat-card>
 			</mat-grid-tile>

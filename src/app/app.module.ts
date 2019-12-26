@@ -53,6 +53,8 @@ import { DragComponent } from "./drag/drag.component";
 import { AddWidgetFormComponent } from "./add-widget-form/add-widget-form.component";
 import { ColorPickerModule } from "ngx-color-picker";
 import { AddLineWidgetFormComponent } from "./add-line-widget-form/add-line-widget-form.component";
+import { ColorPickerComponent } from './color-picker/color-picker.component';
+import { BarComponent } from './bar/bar.component';
 // import { GaugeModule } from "angular-gauge";
 const modules = [
   MatAutocompleteModule,
@@ -114,9 +116,12 @@ const modules = [
     LineComponent,
     DragComponent,
     AddWidgetFormComponent,
-    AddLineWidgetFormComponent
+    AddLineWidgetFormComponent,
+    ColorPickerComponent,
+    BarComponent
   ],
   providers: [DragulaService],
+  exports:[LineComponent],
   entryComponents: [AddWidgetFormComponent, AddLineWidgetFormComponent],
   bootstrap: [AppComponent]
 })
