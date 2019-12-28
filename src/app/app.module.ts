@@ -53,7 +53,6 @@ import { DragComponent } from "./drag/drag.component";
 import { AddWidgetFormComponent } from "./add-widget-form/add-widget-form.component";
 import { ColorPickerModule } from "ngx-color-picker";
 import { AddLineWidgetFormComponent } from "./add-line-widget-form/add-line-widget-form.component";
-import { ColorPickerComponent } from './color-picker/color-picker.component';
 import { BarComponent } from './bar/bar.component';
 // import { GaugeModule } from "angular-gauge";
 const modules = [
@@ -117,7 +116,6 @@ const modules = [
     DragComponent,
     AddWidgetFormComponent,
     AddLineWidgetFormComponent,
-    ColorPickerComponent,
     BarComponent
   ],
   providers: [DragulaService],
