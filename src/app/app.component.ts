@@ -35,11 +35,11 @@ isLoadingCategory: boolean;
 
 
  
-  get categoriesFormGroupSelectedIds(): string[] {
-    let ids: string[] = [];
+  get categoriesFormGroupSelectedIds(): any[] {
+    let ids: any[] = [];
     for (var key in this.categoriesFormGroup.controls) {
       if (this.categoriesFormGroup.controls[key].value) {
-        ids.push(key);
+        ids.push({'key':key, status:true });
       }
     }
     return ids;

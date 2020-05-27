@@ -54,7 +54,7 @@
 
            
             	{{ categoriesFormGroupSelectedIds | json}}
-			    <span *ngIf=>FormGroup - At least one category must be selected.</span>
+			    <span *ngIf="f['categoriesFormGroup'].invalid">FormGroup - At least one category must be selected.</span>
            
 				</tr>
 			<tr class="checkbox-group">
