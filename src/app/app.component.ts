@@ -55,9 +55,14 @@ function minSelectedCheckboxes(min = 10) {
   const validator: ValidatorFn = (formArray: FormArray) => {
     const totalSelected = formArray.controls
       .map(control => control.value)
-      .reduce((prev, next) => next ? prev + next : prev, 0);
-
-    return totalSelected >= min ? null : { required: true };
+      .reduce((prev, next) => {
+        console.log("dddd", prev);
+        console.log("dddd next", next);
+        console.log("dddd next", prev + next);
+        return next ? prev + next : next }, 0
+  );
+    
+    return totalSelected <= min ? null : { required: true };
   };
 
   return validator;
