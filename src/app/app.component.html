@@ -9,13 +9,115 @@
     <input type="checkbox" [formControlName]="i">
     {{ordersData[i].name}}
   </label> -->
-		<div formArrayName="orders" *ngFor="let order of form.controls.orders.controls; let i = index">
-			<mat-checkbox id="i" class="paddingTest" color="primary" [formControlName]="i"> {{ordersData[i].name}}</mat-checkbox>
+		<!-- <div formArrayName="orders" *ngFor="let order of form.controls.orders.controls; let i = index">
+			<mat-checkbox id="i" class="paddingTest" color="primary" [formControlName]="i"> {{ordersData[i].name}}
+			</mat-checkbox>
 		</div>
 
 		<div *ngIf="!form.valid">At least one order must be selected</div>
 		<br>
 		<button [disabled]="!form.valid">submit</button>
+	
+
+	<div class="form-group" *ngIf="!isLoadingCategory; else loadingTmpl">
+		<label>Product Category <strong>(Form Array)</strong></label>
+		<div class="checkbox-group" [class.is-invalid]="f['categoriesFormArr'].invalid">
+			<div *ngFor="let control of categoriesFormArr?.controls; let i = index" class="checkbox">
+				<mat-checkbox  [formControl]="control" > 
+              {{ categories[i]?.title }} </mat-checkbox>
+              
+			</div>
+		</div>
+		<div *ngIf="!form.valid"  class="invalid-feedback" role="alert">
+			FormArray - At least one category must be selected.
+		</div>
+		<div class="alert alert-primary mt-2">
+			{{ categoriesFormArraySelectedIds | json }}
+		</div>
+	</div> -->
+
+  <table class="form-group" *ngIf="!isLoadingCategory; else loadingTmpl">
+
+			<tr class="checkbox-group" >
+				<td>Single</td>
+				<td *ngFor="let item of categories; let i = index" class="checkbox">
+					<mat-checkbox [formControl]="categoriesFormGroup?.controls[item.id]">
+						{{ categories[i]?.title }}
+					</mat-checkbox>
+				</td>
+				<div>
+					
+				</div>
+			</tr>
+      <tr [class.is-invalid]="f['categoriesFormGroup'].invalid">
+           {{f['categoriesFormGroup'].invalid}}
+
+           
+            	{{ categoriesFormGroupSelectedIds | json}}
+			    <span *ngIf=>FormGroup - At least one category must be selected.</span>
+           
+				</tr>
+			<tr class="checkbox-group">
+				<td>Multi</td>
+				<td *ngFor="let item of categories12; let i = index" class="checkbox">
+					<mat-checkbox [formControl]="multiFormGroup?.controls[item.id]">
+						{{ categories[i]?.title }} </mat-checkbox>
+				</td>
+			
+			</tr>
+     
+      	<tr [class.is-invalid]="f['multiFormGroup'].invalid">
+          {{f['multiFormGroup'].invalid}}
+            {{ multiFormGroupSelectedIds | json}}
+           FormGroup - At least one category must be selected.
+					<!-- FormGroup - At least one category must be selected.
+          	{{ categoriesFormGroupSelectedIds | json}}
+            {{ multiFormGroupSelectedIds | json}} -->
+				</tr>
+		</table>
+
+
+		<div class="form-group" *ngIf="!isLoadingCategory; else loadingTmpl">
+			<label>Product Category <strong>(Form Group)</strong></label>
+			<div class="checkbox-group" [class.is-invalid]="f['categoriesFormGroup'].invalid">
+				<div *ngFor="let item of categories; let i = index" class="checkbox">
+					<!-- <label><input type="checkbox" [formControl]="categoriesFormGroup?.controls[item.id]" /> {{ categories[i]?.title }}
+              </label> -->
+
+					<mat-checkbox  [formControl]="categoriesFormGroup?.controls[item.id]" > 
+              {{ categories[i]?.title }} </mat-checkbox>
+
+					<!-- <mat-radio-group [formControl]="categoriesFormGroup?.controls[item.id]">
+						 {{ categories[i]?.title }}
+            <mat-radio-button class="example-margin" value="Single"> Single</mat-radio-button>
+						<mat-radio-button class="example-margin" value="Multi">Multi</mat-radio-button>
+					</mat-radio-group> -->
+				</div>
+			</div>
+
+      
+				<div *ngFor="let item of categories; let i = index" class="checkbox">
+					<!-- <label><input type="checkbox" [formControl]="categoriesFormGroup?.controls[item.id]" /> {{ categories[i]?.title }}
+              </label> -->
+
+					<mat-checkbox  [formControl]="multiFormGroup?.controls[item.id]" > 
+              {{ categories[i]?.title }} </mat-checkbox>
+
+					<!-- <mat-radio-group [formControl]="categoriesFormGroup?.controls[item.id]">
+						 {{ categories[i]?.title }}
+            <mat-radio-button class="example-margin" value="Single"> Single</mat-radio-button>
+						<mat-radio-button class="example-margin" value="Multi">Multi</mat-radio-button>
+					</mat-radio-group> -->
+				</div>
+			
+      
+			<div  class="invalid-feedback" role="alert">
+				FormGroup - At least one category must be selected.
+			</div>
+			<div class="alert alert-primary mt-2">
+				{{ categoriesFormGroupSelectedIds | json}}
+			</div>
+		</div>
 	</form>
 
 </body>
