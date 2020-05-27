@@ -15,6 +15,7 @@ form: FormGroup;
   ordersData = [];
   categories: any[];
   categories12: any[];
+  categoriesModel: any[];
 isLoadingCategory: boolean;
   
   get f() {
@@ -39,7 +40,8 @@ isLoadingCategory: boolean;
     let ids: any[] = [];
     for (var key in this.categoriesFormGroup.controls) {
       if (this.categoriesFormGroup.controls[key].value) {
-        ids.push({'key':key, status:true });
+        console.log('this.categoriesFormGroup.controls[key].value',this.categoriesFormGroup.controls[key].value)
+        ids.push({'key':key, status:this.categoriesFormGroup.controls[key].value });
       }
     }
     return ids;

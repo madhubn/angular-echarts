@@ -36,7 +36,7 @@
 		</div>
 	</div> -->
 
-  <table class="form-group" *ngIf="!isLoadingCategory; else loadingTmpl">
+  <!-- <table class="form-group" *ngIf="!isLoadingCategory; else loadingTmpl">
 
 			<tr class="checkbox-group" >
 				<td>Single</td>
@@ -73,8 +73,8 @@
 					<!-- FormGroup - At least one category must be selected.
           	{{ categoriesFormGroupSelectedIds | json}}
             {{ multiFormGroupSelectedIds | json}} -->
-				</tr>
-		</table>
+				<!-- </tr>
+		</table> --> 
 
 
 		<div class="form-group" *ngIf="!isLoadingCategory; else loadingTmpl">
@@ -84,38 +84,34 @@
 					<!-- <label><input type="checkbox" [formControl]="categoriesFormGroup?.controls[item.id]" /> {{ categories[i]?.title }}
               </label> -->
 
-					<mat-checkbox  [formControl]="categoriesFormGroup?.controls[item.id]" > 
-              {{ categories[i]?.title }} </mat-checkbox>
+					<!-- <mat-checkbox  [formControl]="categoriesFormGroup?.controls[item.id]" > 
+              {{ categories[i]?.title }} </mat-checkbox> -->
 
-					<!-- <mat-radio-group [formControl]="categoriesFormGroup?.controls[item.id]">
+					<mat-radio-group [formControl]="categoriesFormGroup?.controls[item.id]">
 						 {{ categories[i]?.title }}
             <mat-radio-button class="example-margin" value="Single"> Single</mat-radio-button>
 						<mat-radio-button class="example-margin" value="Multi">Multi</mat-radio-button>
-					</mat-radio-group> -->
+					</mat-radio-group>
 				</div>
 			</div>
 
-      
+<!--       
 				<div *ngFor="let item of categories; let i = index" class="checkbox">
-					<!-- <label><input type="checkbox" [formControl]="categoriesFormGroup?.controls[item.id]" /> {{ categories[i]?.title }}
-              </label> -->
+				
 
 					<mat-checkbox  [formControl]="multiFormGroup?.controls[item.id]" > 
               {{ categories[i]?.title }} </mat-checkbox>
 
-					<!-- <mat-radio-group [formControl]="categoriesFormGroup?.controls[item.id]">
-						 {{ categories[i]?.title }}
-            <mat-radio-button class="example-margin" value="Single"> Single</mat-radio-button>
-						<mat-radio-button class="example-margin" value="Multi">Multi</mat-radio-button>
-					</mat-radio-group> -->
+				
 				</div>
-			
+			 -->
       
 			<div  class="invalid-feedback" role="alert">
 				FormGroup - At least one category must be selected.
 			</div>
 			<div class="alert alert-primary mt-2">
 				{{ categoriesFormGroupSelectedIds | json}}
+				{{ categoriesModel | json}}
 			</div>
 		</div>
 	</form>
